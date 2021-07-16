@@ -1,4 +1,5 @@
 #!/bin/bash
+
 set -o errexit -o pipefail -o noclobber -o nounset
 
 # i don't love this but i'll keep it for now
@@ -20,21 +21,21 @@ function linkDotfile {
   if [ -h "${HOME}/${1}" ]; then
     # Existing symlink 
     echo "Removing existing symlink: ${dest}"
-    rm ${dest} 
+    rm "${dest}" 
 
   elif [ -f "${dest}" ]; then
     # Existing file
     echo "Backing up existing file: ${dest}"
-    mv ${dest}{,.${dateStr}}
+    mv "${dest}"{,."${dateStr}"}
 
   elif [ -d "${dest}" ]; then
     # Existing dir
     echo "Backing up existing dir: ${dest}"
-    mv ${dest}{,.${dateStr}}
+    mv "${dest}"{,."${dateStr}"}
   fi
 
   echo "Creating new symlink: ${dest}"
-  cp -rs "${dotfilesDir}/${1}" ${dest}
+  cp -rs "${dotfilesDir}/${1}" "${dest}"
 }
 
 linkDotfile .vimrc
@@ -44,3 +45,4 @@ linkDotfile .config/lynx
 linkDotfile .config/newsboat
 linkDotfile .config/kitty
 linkDotfile .config/bspwm
+linkDotfile ".config/gtk-3.0"

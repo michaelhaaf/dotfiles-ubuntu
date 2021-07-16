@@ -1,16 +1,18 @@
 #!/bin/bash
 
 function pywal {
-	wpg -a "$1";
-	wal -i "$1"; 
-#	razer-cli -a ;
+	theme=`find ~/Pictures/Wallpapers/ | sort -R | tail -1`
+	wpg -a "$theme";
 #	i3-msg restart ;
-	wal-discord ;
-	beautifuldiscord --css "$HOME"/.cache/wal-discord/style.css ;
+
 
 	# from the docs: adds <x> saturation to current scheme, then reapplies.
 	# adjusted: the basename is the name of the them, see the wpg -a command
-	wpg --sat "$(basename $1)" 0.1
+	wpg --sat "$(basename $theme)" 0.1
+	wpg -A "$(basename $theme)"
+	wpg -s "$(basename $theme)"
+	
+	wal-discord ;
 }
 		
-pywal "$1"
+pywal 
