@@ -36,4 +36,4 @@ install newsboat
 
 install python3-venv
 install python3-pip
-
+install npm
