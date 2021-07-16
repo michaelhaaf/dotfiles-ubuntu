@@ -43,3 +43,4 @@ linkDotfile .xinitrc
 linkDotfile .config/lynx
 linkDotfile .config/newsboat
 linkDotfile .config/kitty
+linkDotfile .config/bspwm

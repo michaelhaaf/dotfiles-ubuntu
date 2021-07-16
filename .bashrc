@@ -116,8 +116,9 @@ export PATH="$HOME/Repositories/path-scripts:$PATH";
 # Import colorscheme from 'wal' asynchronously
 # &   # Run the process in the background.
 # ( ) # Hide shell job control messages.
-# Not supported in the "fish" shell.
 (cat ~/.cache/wal/sequences &)
+(cat ~/.config/wpg/sequences &)
+source ~/.cache/wal/colors-tty.sh
 
 # useful lynx settings for execution
 export LYNX_CFG="$HOME/.config/lynx/lynx.cfg"
@@ -156,4 +157,5 @@ case ${TERM} in
 			;;
 esac
 
-
+# QT graphical application theme env variable
+export QT_QPA_PLATFORMTHEME=qt5ct
