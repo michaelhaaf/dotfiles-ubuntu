@@ -36,7 +36,7 @@ bspc config presel_feedback_color "$color1"
 
 pic=`find ~/Pictures/Wallpapers/ | sort -R | tail -1`
 nitrogen --head=0 --set-zoom-fill $pic
-nitrogen --head=1 --set-zoom-fill $pic &> /dev/null
-nitrogen --head=2 --set-zoom-fill $pic &> /dev/null
+nitrogen --head=1 --set-zoom-fill $pic 
+nitrogen --head=2 --set-zoom-fill $pic
 
 $HOME/.config/polybar/launch.sh

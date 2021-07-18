@@ -15,6 +15,8 @@ let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 Plug 'dylanaraps/wal.vim'
 
+Plug 'chrisbra/unicode.vim'
+
 Plug 'https://github.com/godlygeek/tabular'
 Plug 'https://github.com/plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
