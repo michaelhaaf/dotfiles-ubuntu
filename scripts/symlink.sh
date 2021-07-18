@@ -47,3 +47,6 @@ linkDotfile .config/kitty
 linkDotfile .config/bspwm
 linkDotfile ".config/gtk-3.0"
 linkDotfile .config/wal/templates
+linkDotfile .config/sxhkd
+linkDotfile .Xresources
+linkDotfile .config/polybar

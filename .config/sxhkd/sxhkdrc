@@ -1,6 +1,13 @@
 #
 # wm independent hotkeys
-#
+
+# show help
+super + slash
+	sxhkd-help.sh
+
+# load rofi in drun mode
+super
+	rofi -show drun
 
 # terminal emulator
 super + Return
@@ -8,13 +15,12 @@ super + Return
 
 # program launcher
 super + @space
-	rofi -show drun
+	rofi -show run
 
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
 
-#
 # bspwm hotkeys
 #
 

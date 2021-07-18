@@ -111,7 +111,7 @@ fi
 # PATH settings
 export PATH="$HOME/Documents/Grading/GradingUtilities:$PATH"; 
 export PATH="/home/michael/.local/bin:$PATH";
-export PATH="$HOME/Repositories/path-scripts:$PATH";
+export PATH="$HOME/Repositories/dotfiles/scripts:$PATH";
 
 # Import colorscheme from 'wal' asynchronously
 # &   # Run the process in the background.

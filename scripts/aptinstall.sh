@@ -21,6 +21,7 @@ install git
 install htop
 install openvpn
 install vim
+install exa
 
 install kitty
 install zbar-tools
@@ -29,11 +30,19 @@ install pass
 install pass-extension-otp
 
 install gnome-tweaks
+install ranger
+install compton
+install calc
+install xdotool
+
 install firefox
 install chromium-browser
 install lynx
 install newsboat
 
+install python2
 install python3-venv
 install python3-pip
 install npm
+
+
