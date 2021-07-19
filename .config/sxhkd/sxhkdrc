@@ -2,16 +2,32 @@
 # wm independent hotkeys
 
 # show help
-super + slash
-	sxhkd-help.sh
+super + @slash
+	exec sxhkd-help
 
-# load rofi in drun mode
-super
-	rofi -show drun
+# screenshot to file
+super + alt + @x
+	scrot -s
+
+# screenshot to clipboard
+super + shift + @x 
+	scrot -s -e 'xclip -selection clipboard -t image/png -i $f'
+
+# volume up
+super + shift + u
+	pulsemixer --change-volume +5
+
+# volume down
+super + shift + d
+	pulsemixer --change-volume -5
 
 # terminal emulator
 super + Return
 	kitty
+
+# webcam 
+super + c
+	exec camtoggle
 
 # program launcher
 super + @space
