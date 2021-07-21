@@ -50,3 +50,7 @@ linkDotfile .config/wal/templates
 linkDotfile .config/sxhkd
 linkDotfile .Xresources
 linkDotfile .config/polybar
+
+linkDotfile .local/bin/duck
+linkDotfile .local/bin/sxhkd-help
+linkDotfile .local/bin/camtoggle
