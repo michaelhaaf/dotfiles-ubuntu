@@ -31,7 +31,7 @@ super + Return
 
 # webcam 
 super + c
-	exec camtoggle
+	exec --no-startup-id camtoggle
 
 # program launcher
 super + @space
