@@ -14,12 +14,16 @@ super + shift + @x
 	scrot -s -e 'xclip -selection clipboard -t image/png -i $f'
 
 # volume up
-super + shift + u
-	pulsemixer --change-volume +5
+super + Up
+	pulsemixer --change-volume +1
 
 # volume down
-super + shift + d
-	pulsemixer --change-volume -5
+super + Down
+	pulsemixer --change-volume -1
+
+# volume mute toggle
+super + m
+	pulsemixer --toggle-mute	
 
 # terminal emulator
 super + Return
