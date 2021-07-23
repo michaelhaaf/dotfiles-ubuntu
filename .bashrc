@@ -159,3 +159,6 @@ esac
 
 # QT graphical application theme env variable
 export QT_QPA_PLATFORMTHEME=qt5ct
+
+# handy logging alias
+alias journalctl='journalctl --utc -o short-precise --no-hostname'
