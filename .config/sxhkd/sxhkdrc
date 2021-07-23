@@ -22,7 +22,7 @@ super + Down
 	pulsemixer --change-volume -1
 
 # volume mute toggle
-super + m
+super + shift + m
 	pulsemixer --toggle-mute	
 
 # terminal emulator

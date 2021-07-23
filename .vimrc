@@ -31,6 +31,7 @@ colorscheme wal
 set background=dark
 
 set number
+set relativenumber
 set wildmenu
 set showcmd
 set ruler
