@@ -51,4 +51,4 @@ install lxappearance
 install rsync
 install golang
 install rofi
-
+install zathura
