@@ -29,7 +29,6 @@ install shellcheck
 install pass
 install pass-extension-otp
 
-install gnome-tweaks
 install ranger
 install compton
 install calc
@@ -39,10 +38,17 @@ install firefox
 install chromium-browser
 install lynx
 install newsboat
+install shellcheck
+install thunderbird
 
 install python2
 install python3-venv
 install python3-pip
 install npm
 
+install bspwm
+install lxappearance
+install rsync
+install golang
+install rofi
 
