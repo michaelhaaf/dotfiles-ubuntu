@@ -55,5 +55,6 @@ linkDotfile .local/bin/duck
 linkDotfile .local/bin/sxhkd-help
 linkDotfile .local/bin/camtoggle
 linkDotfile .local/bin/tetristoggle
+linkDotfile .local/bin/camreset
 linkDotfile .config/fontconfig/fonts.conf
 

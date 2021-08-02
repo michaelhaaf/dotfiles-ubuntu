@@ -29,9 +29,9 @@ super + shift + m
 super + Return
 	kitty
 
-# webcam/tetriscam
-super + alt + {c, t}
-	exec {camtoggle,tetristoggle}
+# webcam/tetriscam/reset
+super + alt + {c, t, v}
+	exec {camtoggle,tetristoggle,camreset}
 
 # program launcher
 super + @space
