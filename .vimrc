@@ -1,3 +1,9 @@
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 
@@ -13,8 +19,6 @@ let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
-Plug 'dylanaraps/wal.vim'
-
 Plug 'chrisbra/unicode.vim'
 
 Plug 'https://github.com/godlygeek/tabular'
@@ -27,7 +31,6 @@ Plug 'https://github.com/junegunn/goyo.vim'
 call plug#end()
 
 
-colorscheme wal
 set background=dark
 
 set number

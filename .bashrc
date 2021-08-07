@@ -162,3 +162,9 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 
 # handy logging alias
 alias journalctl='journalctl --utc -o short-precise --no-hostname'
+
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"

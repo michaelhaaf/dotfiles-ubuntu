@@ -21,7 +21,7 @@ install git
 install htop
 install openvpn
 install vim
-install exa
+# install exa
 
 install kitty
 install zbar-tools
@@ -30,6 +30,7 @@ install pass
 install pass-extension-otp
 
 install ranger
+install xcompmgr
 install compton
 install calc
 install xdotool
