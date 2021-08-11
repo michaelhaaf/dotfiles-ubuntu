@@ -33,6 +33,10 @@ super + Return
 super + alt + {c, t, v}
 	exec {camtoggle,tetristoggle,camreset}
 
+# system suspend/reboot/shutdown
+super + {_, alt, shift} + BackSpace
+	systemctl {suspend,reboot,poweroff}
+
 # program launcher
 super + @space
 	rofi -show run
