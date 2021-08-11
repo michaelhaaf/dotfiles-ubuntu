@@ -57,4 +57,4 @@ linkDotfile .local/bin/camtoggle
 linkDotfile .local/bin/tetristoggle
 linkDotfile .local/bin/camreset
 linkDotfile .config/fontconfig/fonts.conf
-
+linkDotfile .xmodmap
