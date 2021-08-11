@@ -1,7 +1,9 @@
 #!/bin/bash
 exec bspwm
 exec redshift
-xset +fp /home/michael/.local/share/fonts
+# rm /etc/fonts/conf.d/70-no-bitmaps.conf to get bitmap fonts to work!
+xset +fp /home/michael/.local/share/fonts/
 xset fp rehash
 xset r rate 300 50
-xmodmap .xmodmap
+setxkbmap -option caps:escape
+
