@@ -53,3 +53,7 @@ install rsync
 install golang
 install rofi
 install zathura
+
+install pavucontrol
+install pulsemixer
+install redshift
