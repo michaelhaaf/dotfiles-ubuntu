@@ -66,4 +66,4 @@ linkDotfile '.local/bin/camreset'
 linkDotfile '.local/bin/monitor-setup'
 linkDotfile '.local/bin/rofi-bluetooth'
 linkDotfile '.local/bin/rofi-pass'
-
+linkDotfile '.local/share/flavours/base16/templates/bspwm'
