@@ -44,6 +44,7 @@ set ruler
 
 set autoindent
 set shiftwidth=4
+set expandtab
 set tabstop=4
 set cmdheight=2
 set hlsearch

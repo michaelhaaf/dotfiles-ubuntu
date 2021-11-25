@@ -157,3 +157,6 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 . "$HOME/.cargo/env"
 
 set -o vi
+
+# kitty support for ssh
+alias ssh="kitty +kitten ssh"

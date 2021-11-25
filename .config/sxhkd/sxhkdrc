@@ -38,8 +38,16 @@ super + {_, alt, shift} + BackSpace
 	systemctl {suspend,reboot,poweroff}
 
 # program launcher
-super + @space
+super + space
 	rofi -show run
+
+# pass manager launcher
+super + shift + space
+	rofi-pass
+
+# bluetooth launcher
+super + alt + space
+    rofi-bluetooth
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -67,6 +75,10 @@ super + y
 # swap the current node and the biggest node
 super + g
 	bspc node -s biggest
+
+# layout cycle
+super + shift + g
+	bsp-layout cycle --layouts tall,wide,rtall,rwide,grid,rgrid,even,tile
 
 #
 # state/flags
