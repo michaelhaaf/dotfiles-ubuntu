@@ -1,0 +1,67 @@
+shell = "bash -c '{}'"
+
+[[item]]
+file = "~/.config/nvim/colors/base16.vim"
+template = "vim"
+rewrite = true
+hook = "reloadnvim"
+
+[[item]]
+file = "~/.local/share/themes/FlatColor/colors3"
+template = "gtk-flatcolor"
+subtemplate = "gtk-3"
+rewrite = true
+hook = "gsettings set org.gnome.desktop.interface gtk-theme dummy && gsettings set org.gnome.desktop.interface gtk-theme FlatColor"
+
+[[item]]
+file = "~/.local/share/themes/FlatColor/colors2"
+template = "gtk-flatcolor"
+subtemplate = "gtk-2"
+rewrite = true
+
+[[item]]
+file= "~/.config/zathura/zathurarc"
+template = "zathura"
+
+# [[item]]
+# file = "~/.config/beautifuldiscord/style.css"
+# template = "styles"
+# subtemplate = "css-variables"
+# rewrite = false
+# start= "/* Start flavours */"
+# end = "/* End flavours */"
+
+[[item]]
+file = "~/.config/rofi/themes/colors.rasi"
+template = "rofi"
+subtemplate = "colors"
+rewrite = true
+
+[[item]]
+file = "~/.config/polybar/config"
+template = "polybar"
+hook = "polybar-msg cmd restart"
+start = "; start flavours"
+end = "; end flavours"
+
+[[item]]
+file = "~/.config/bspwm/bspwm_colors.sh"
+template = "bspwm"
+hook = "sh -c ~/.config/bspwm/bswpm_colors.sh"
+rewrite = true
+
+[[item]]
+file = "~/.Xresources"
+template = "xresources"
+rewrite = true
+
+[[item]]
+file = "~/.config/kitty/colors-256.conf"
+template = "kitty"
+subtemplate = "default-256"
+rewrite = true
+
+[[item]]
+file = "~/.config/base16-shell/active_theme.sh"
+template = "shell"
+rewrite = true

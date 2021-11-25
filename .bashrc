@@ -2,6 +2,9 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+shopt -s autocd			# cd into directory merely by typing directory name
+HISTSIZE= HISTFILESIZE=	# Infinite history
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -14,10 +17,6 @@ HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
 shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -67,9 +66,6 @@ unset color_prompt force_color_prompt
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
@@ -92,9 +88,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+[ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -110,15 +104,7 @@ fi
 
 # PATH settings
 export PATH="$HOME/Documents/Grading/GradingUtilities:$PATH"; 
-export PATH="/home/michael/.local/bin:$PATH";
 export PATH="$HOME/Repositories/dotfiles/scripts:$PATH";
-
-# Import colorscheme from 'wal' asynchronously
-# &   # Run the process in the background.
-# ( ) # Hide shell job control messages.
-(cat ~/.config/wpg/sequences &)
-# (cat ~/.cache/wal/sequences &)
-source ~/.cache/wal/colors-tty.sh
 
 # useful lynx settings for execution
 export LYNX_CFG="$HOME/.config/lynx/lynx.cfg"
@@ -129,8 +115,6 @@ alias lynx="lynx --useragent='$useragent'"
 
 # making 'rm' safer
 alias rm="rm -i"
-
-export EDITOR=vim
 
 # XDG base environment variables
 export XDG_CONFIG_HOME="$HOME/.config";
@@ -168,3 +152,8 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         eval "$("$BASE16_SHELL/profile_helper.sh")"
+
+
+. "$HOME/.cargo/env"
+
+set -o vi

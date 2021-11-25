@@ -5,7 +5,10 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-commentary'
+Plug 'wellle/targets.vim'
 
 Plug 'lervag/vimtex'
 let g:tex_flavor='latex'

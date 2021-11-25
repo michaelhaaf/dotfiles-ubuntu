@@ -5,17 +5,18 @@ sudo add-apt-repository ppa:mozillateam/firefox-next -y
 sudo apt update
 
 function install {
-  which $1 &> /dev/null
-
-  if [ $? -ne 0 ]; then
+  if [ "${1}" -ne 0 ]; then
     echo "Installing: ${1}..."
-    sudo apt install -y $1
+    sudo apt install -y "${1}"
   else
     echo "Already installed: ${1}"
   fi
 }
 
-# Basics
+function custom_install {
+  [[ "${1}" -ne 0 ]] && echo "Installing: ${1}" && exec "${2}" || echo "Already installed. ${1}" 
+}
+
 install curl
 install git
 install htop
@@ -40,7 +41,7 @@ install chromium-browser
 install lynx
 install newsboat
 install shellcheck
-install thunderbird
+# install thunderbird
 
 install python2
 install python3-venv
@@ -57,3 +58,7 @@ install zathura
 install pavucontrol
 install pulsemixer
 install redshift
+install cargo
+
+# experimental
+custom_install flavours "cargo install --locked flavours"

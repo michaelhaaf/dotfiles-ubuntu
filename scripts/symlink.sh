@@ -38,23 +38,30 @@ function linkDotfile {
   cp -rs "${dotfilesDir}/${1}" "${dest}"
 }
 
-linkDotfile .vimrc
-linkDotfile .bashrc
-linkDotfile .xinitrc
-linkDotfile .config/lynx
-linkDotfile .config/newsboat
-linkDotfile .config/kitty
-linkDotfile .config/bspwm
-linkDotfile ".config/gtk-3.0"
-linkDotfile .config/wal/templates
-linkDotfile .config/sxhkd
-linkDotfile .Xresources
-linkDotfile .config/polybar
+linkDotfile '.vimrc'
+linkDotfile '.bashrc'
+linkDotfile ".xinitrc"
+linkDotfile '.profile'
 
-linkDotfile .local/bin/duck
-linkDotfile .local/bin/sxhkd-help
-linkDotfile .local/bin/camtoggle
-linkDotfile .local/bin/tetristoggle
-linkDotfile .local/bin/camreset
-linkDotfile .config/fontconfig/fonts.conf
-linkDotfile .profile
+linkDotfile ".config/lynx"
+linkDotfile ".config/newsboat"
+linkDotfile ".config/kitty"
+linkDotfile ".config/bspwm"
+linkDotfile ".config/gtk-3.0"
+linkDotfile '.config/sxhkd'
+linkDotfile '.config/polybar'
+linkDotfile '.config/rofi'
+linkDotfile '.config/fontconfig/fonts.conf'
+linkDotfile '.config/flavours'
+linkDotfile '.config/zathura'
+linkDotfile '.config/vis'
+linkDotfile '.config/base16-shell/active_theme.sh'
+linkDotfile '.config/nvim'
+
+linkDotfile '.local/bin/duck'
+linkDotfile '.local/bin/sxhkd-help'
+linkDotfile '.local/bin/camtoggle'
+linkDotfile '.local/bin/tetristoggle'
+linkDotfile '.local/bin/camreset'
+linkDotfile '.local/bin/monitor-setup'
+
