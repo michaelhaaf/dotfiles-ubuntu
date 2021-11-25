@@ -64,4 +64,6 @@ linkDotfile '.local/bin/camtoggle'
 linkDotfile '.local/bin/tetristoggle'
 linkDotfile '.local/bin/camreset'
 linkDotfile '.local/bin/monitor-setup'
+linkDotfile '.local/bin/rofi-bluetooth'
+linkDotfile '.local/bin/rofi-pass'
 
