@@ -65,3 +65,8 @@ rewrite = true
 file = "~/.config/base16-shell/active_theme.sh"
 template = "shell"
 rewrite = true
+
+[[item]]
+file = "~/.config/qt5ct/colors/colors.conf"
+template = "qt5ct"
+rewrite = true
