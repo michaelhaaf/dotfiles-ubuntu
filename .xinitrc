@@ -5,4 +5,4 @@ xset fp rehash &
 xset r rate 300 50 &
 setxkbmap -option caps:escape &
 xrdb -load "$HOME/.Xresources" &
-pkill -f redshift || exec redshift & 
+[[ -z "$(pgrep redshift)" ]] && exec redshift & 

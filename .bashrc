@@ -1,18 +1,19 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
 
-shopt -s autocd			# cd into directory merely by typing directory name
-HISTSIZE= HISTFILESIZE=	# Infinite history
-
+### DEFAULTS (mostly: see bash(1) for more options) ###
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
       *) return;;
 esac
 
+# cd into directory merely by typing directory name	
+shopt -s autocd		
+
+# infinite history
+HISTSIZE= HISTFILESIZE=	
+
 # don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
 HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
@@ -56,7 +57,12 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\033[01;35m\][\033[01;33m\]\u@\h \033[01;34m\]\W\033[01;35m\]]\033[00m\]$ '
+    red=$(tput setaf 12)
+    yellow=$(tput setaf 11)
+    purple=$(tput setaf 13)
+    bold=$(tput bold)
+    reset=$(tput sgr0)
+    PS1='${debian_chroot:+($debian_chroot)}\[$purple$bold\][\[$yellow$bold\]\u@\h \[$red$bold\]\W\[$purple$bold\]]\[$reset\]$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -71,25 +77,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# some more ls aliases
-alias ll='exa -alF'
-alias la='exa -A'
-alias l='exa -CF'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-[ -f ~/.bash_aliases ] && . ~/.bash_aliases
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -101,20 +88,20 @@ if ! shopt -oq posix; then
   fi
 fi
 
+### CUSTOM EXPORTS ###
 
-# PATH settings
+# use vim for man
+export MANPAGER="vim -M +MANPAGER -"
+
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# custom PATH settings
 export PATH="$HOME/Documents/Grading/GradingUtilities:$PATH"; 
-export PATH="$HOME/Repositories/dotfiles/scripts:$PATH";
 
 # useful lynx settings for execution
 export LYNX_CFG="$HOME/.config/lynx/lynx.cfg"
 export LYNX_LSS="$HOME/.config/lynx/lynx.lss"
-
-useragent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_0) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.118    0.79 Safari/537.1 Lynx"
-alias lynx="lynx --useragent='$useragent'"
-
-# making 'rm' safer
-alias rm="rm -i"
 
 # XDG base environment variables
 export XDG_CONFIG_HOME="$HOME/.config";
@@ -123,29 +110,42 @@ export XDG_DATA_HOME="$HOME/.local/share";
 export XDG_STATE_HOME="$HOME/.local/share";
 
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc";
-export SSB_HOME="$XDG_DATA_HOME/zoom";
+export SSB_HOME="$XDG_DATA_HOME/zoom"; # very suspicious
 export WGETRC="$XDG_CONFIG_HOME/wgetrc";
-alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
-
-# use vim for man
-# export MANPAGER="vim -M +MANPAGER -"
-
-### CHANGE TITLE OF TERMINAL
-
-case ${TERM} in 
-	xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|alacritty|st|konsole*)     
-		PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\007"'
-			;;  
-	screen*)   
-		PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\033\\"'    
-			;;
-esac
 
 # QT graphical application theme env variable
 export QT_QPA_PLATFORMTHEME=qt5ct
 
-# handy logging alias
+### CUSTOM ALIASES ###
+
+[ -f ~/.bash_aliases ] && . ~/.bash_aliases
+
+# improved (with exa) ls aliases
+alias ll='exa -alF'
+alias la='exa -A'
+alias l='exa -CF'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+
+# making 'rm' safer
+alias rm="rm -i"
+
+# convenience program aliases
+useragent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_0) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.118    0.79 Safari/537.1 Lynx"
+alias lynx="lynx --useragent='$useragent'"
+alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
+alias yt="youtube-dl --add-metadata -ic" # Download video link
+alias yta="youtube-dl --add-metadata -xic" # Download audio only 
+alias ccat="highlight --out-format=ansi" # color cat
 alias journalctl='journalctl --utc -o short-precise --no-hostname'
+alias ssh="kitty +kitten ssh"
+
+### CUSTOM ENVIRONMENT STUFF ###
+set -o vi
+. "$HOME/.cargo/env"
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
@@ -154,9 +154,3 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
         eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 
-. "$HOME/.cargo/env"
-
-set -o vi
-
-# kitty support for ssh
-alias ssh="kitty +kitten ssh"
