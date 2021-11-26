@@ -14,7 +14,6 @@
 [ -f ~/.bashrc ] && source ~/.bashrc
 
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$(go env GOPATH)/bin
 . "$HOME/.cargo/env"
 
 export EDITOR="vim"
