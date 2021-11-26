@@ -1,3 +1,4 @@
+#!/bin/bash
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
 ### DEFAULTS (mostly: see bash(1) for more options) ###
@@ -11,7 +12,8 @@ esac
 shopt -s autocd		
 
 # infinite history
-HISTSIZE= HISTFILESIZE=	
+HISTSIZE=-1
+HISTFILESIZE=-1	
 
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
