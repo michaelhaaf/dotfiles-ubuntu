@@ -3,8 +3,8 @@
 window {
     background-color:   @background;
     text-color:         @foreground;
-    width:              1100;
-    height:             800;
+    width:              960;
+    height:             544;
     x-offset:           0;
     y-offset:           0;
 }
@@ -12,14 +12,14 @@ window {
 prompt {
     enabled:            true;
     padding:            0% 0.5% 0% 0%;
-    background-color:   @background;
+    background-color:   @background-color;
     text-color:         @red;
     font:               "Fira Code Nerd Font 13";
 }
 
 
 inputbar {
-    background-color:   @background;
+    background-color:   @background-color;
     text-color:         @foreground;
     expand:             false;
     position:           center;
@@ -27,7 +27,7 @@ inputbar {
 
 
 entry {
-    background-color:   @background;
+    background-color:   @background-color;
     text-color:         @foreground;
     placeholder-color:  @foreground;
     expand:             true;
@@ -37,14 +37,14 @@ entry {
 }
 
 case-indicator {
-    background-color:               @background;
+    background-color:               @background-color;
     text-color:                     @foreground;
     spacing:                        0;
 }
 
 
 listview {
-    background-color:               @background;
+    background-color:               @background-color;
     columns:                        5;
     spacing:                        1%;
     cycle:                          false;
@@ -53,14 +53,14 @@ listview {
 }
 
 mainbox {
-    background-color:               @background;
+    background-color:               @background-color;
     children:                       [ inputbar, listview ];
     spacing:                        2%;
     padding:                        2% 2% 2% 2%;
 }
 
 element {
-    background-color:               @background;
+    background-color:               @background-color;
     text-color:                     @foreground;
     orientation:                    vertical;
     border-radius:                  0%;
