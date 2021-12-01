@@ -20,9 +20,10 @@ function custom_install {
 install curl
 install git
 install htop
-install openvpn
 install vim
 # install exa
+# install nvim??
+install calcurses
 
 install kitty
 install zbar-tools

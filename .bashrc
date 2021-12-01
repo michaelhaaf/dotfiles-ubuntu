@@ -132,9 +132,9 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
 # improved (with exa) ls aliases
-alias ll='exa -alF'
-alias la='exa -A'
-alias l='exa -CF'
+alias ll='exa -alF --group-directories-first'
+alias la='exa -A --group-directories-first'
+alias l='exa -CF --group-directories-first'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
