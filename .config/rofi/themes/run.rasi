@@ -45,7 +45,7 @@ case-indicator {
 
 listview {
     background-color:               @background-color;
-    columns:                        5;
+    columns:                        1;
     spacing:                        1%;
     cycle:                          false;
     dynamic:                        true;
