@@ -3,6 +3,8 @@
 # TODO: generalize, this just makes sure rule is only applied to laptop
 [[ $(hostname) = "work" ]] || exit 0
 
+pkill polybar
+
 # hardcoded laptop primary
 primary='eDP-1-1'	
 

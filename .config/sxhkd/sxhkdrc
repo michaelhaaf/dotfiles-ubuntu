@@ -46,8 +46,8 @@ super + Escape
     rofi -show window
 
 # pass manager launcher
-super + shift + space
-	rofi-pass
+super + shift + {_, alt} + p
+	rofi-pass {_,--insert}
 
 # bluetooth launcher
 super + alt + space

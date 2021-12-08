@@ -23,7 +23,7 @@ install htop
 install vim
 # install exa
 # install nvim??
-install calcurses
+install calcurse
 
 install kitty
 install zbar-tools
@@ -48,6 +48,7 @@ install python2
 install python3-venv
 install python3-pip
 install npm
+install jq
 
 install bspwm
 install lxappearance
@@ -55,6 +56,8 @@ install rsync
 install golang
 install rofi
 install zathura
+install mpv
+install sxiv
 
 install pavucontrol
 install pulsemixer
