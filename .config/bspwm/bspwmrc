@@ -1,7 +1,6 @@
 #!/bin/bash
 
 sxhkd &
-xcompmgr -c -n &
 monitor-setup
 
 bspc config remove_unplugged_monitors true

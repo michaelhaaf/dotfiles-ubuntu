@@ -57,6 +57,7 @@ linkDotfile '.config/zathura'
 linkDotfile '.config/vis'
 linkDotfile '.config/base16-shell/active_theme.sh'
 linkDotfile '.config/nvim'
+linkDotfile '.config/picom.conf'
 
 linkDotfile '.local/bin/duck'
 linkDotfile '.local/bin/sxhkd-help'
