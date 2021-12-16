@@ -8,7 +8,8 @@ monitors=($(bspc query -M | uniq))
 
 # set colours to match pic
 pic=`find ~/Pictures/Wallpapers/ | sort -R | tail -1`
-flavours generate dark $pic && flavours apply generated
+#flavours generate dark $pic && flavours apply generated
+flavours apply horizon-dark
 
 # TODO: refactor, this could be much better lol
 nitrogen --head=0 --set-zoom-fill $pic
@@ -33,6 +34,7 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
 bspc rule -a Zathura state=tiled
+bspc rule -a mpv state=floating sticky=on
 
 ~/.config/bspwm/bspwm_colors.sh &
 $HOME/.xinitrc &
