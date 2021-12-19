@@ -25,6 +25,14 @@ super + Down
 super + shift + m
 	pulsemixer --toggle-mute	
 
+# brightness up
+super + alt + Up
+    brightness-adj inc
+
+# brightness down
+super + alt + Down
+    brightness-adj dec
+
 # terminal emulator
 super + Return
 	kitty
