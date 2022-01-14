@@ -1,2 +1,3 @@
 #!/bin/bash
-pkill -f /dev/video6 || mpv --geometry=-0-0 --autofit=30% --demuxer-lavf-format=video4linux2 --demuxer-lavf-o-set=input_format=mjpeg av://v4l2:/dev/video6 --profile=low-latency
+device="$(v4l2-ctl --list-devices | grep -A1 'PC Camera' | sed 's/^[[:space:]]//' | tail -n 1)"
+pkill -f "$device" || mpv --geometry=-0-0 --autofit=30% --demuxer-lavf-format=video4linux2 --demuxer-lavf-o-set=input_format=mjpeg "av://v4l2:$device" --profile=low-latency

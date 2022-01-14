@@ -33,6 +33,10 @@ super + alt + Up
 super + alt + Down
     brightness-adj dec
 
+# toggle compositor
+super + shift + b
+    exec compositoggle 
+
 # terminal emulator
 super + Return
 	kitty
