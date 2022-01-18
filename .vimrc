@@ -8,6 +8,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive' "git integration
 Plug 'wellle/targets.vim'
 
 Plug 'lervag/vimtex'
