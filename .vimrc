@@ -31,6 +31,8 @@ Plug 'https://github.com/plasticboy/vim-markdown'
 Plug 'https://github.com/junegunn/limelight.vim'
 Plug 'https://github.com/junegunn/goyo.vim'
 
+Plug 'vimwiki/vimwiki'
+
 call plug#end()
 
 
@@ -62,3 +64,13 @@ autocmd Filetype rmd map <F5> :!echo<space>"require(rmarkdown);<space>render('<c
 
 set printfont=Courier:h8
 command! -range=% HardcopyPdf <line1>,<line2> hardcopy > %.ps | !ps2pdf %.ps && rm %.ps
+
+"==============================="
+"           VIM WIKI            "
+"==============================="
+try
+    source ~/vimwiki/vimwiki.vim
+catch
+    " no such file? no problem; just ignore it.
+endtry
+
