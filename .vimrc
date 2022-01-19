@@ -11,6 +11,13 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive' "git integration
 Plug 'wellle/targets.vim'
 
+let g:ale_completion_enabled = 1
+let g:ale_fixers = {
+\    '*': ['remove_trailing_lines', 'trim_whitespace'],
+\    'python': ['autopep8']
+\}
+Plug 'dense-analysis/ale'
+
 Plug 'lervag/vimtex'
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
@@ -74,4 +81,3 @@ try
 catch
     " no such file? no problem; just ignore it.
 endtry
-
