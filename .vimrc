@@ -11,7 +11,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive' "git integration
 Plug 'wellle/targets.vim'
 
-let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 1 " style fixer
 let g:ale_fixers = {
 \    '*': ['remove_trailing_lines', 'trim_whitespace'],
 \    'python': ['autopep8']
@@ -41,6 +41,8 @@ Plug 'https://github.com/junegunn/goyo.vim'
 
 Plug 'vimwiki/vimwiki'
 
+Plug 'preservim/nerdtree'
+
 call plug#end()
 
 
@@ -67,6 +69,18 @@ if has('syntax')
   syntax on
 endif
 
+
+"==============================="
+"           COMMANDS            "
+"==============================="
+
+" Enable spell checking
+map <leader>s :setlocal spell! spelllang=en_au<CR>
+
+" Shellcheck
+map <leader>S :!clear && shellcheck %<CR>
+
+" compiling:
 autocmd Filetype rmd map <F5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>R<space>--vanilla<enter>
 
 
@@ -81,3 +95,14 @@ try
 catch
     " no such file? no problem; just ignore it.
 endtry
+
+"==============================="
+"           NERDTree            "
+"==============================="
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+" Start NERDTree and leave the cursor in it.
+autocmd VimEnter * NERDTree
+
