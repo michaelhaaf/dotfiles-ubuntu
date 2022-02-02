@@ -11,7 +11,7 @@
 [ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
 [ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
 
-[ -f ~/.bashrc ] && source ~/.bashrc
+[ -f ~/.bashrc ] && . "$HOME/.bashrc"
 
 export PATH=$PATH:/usr/local/go/bin
 . "$HOME/.cargo/env"

@@ -1,0 +1,66 @@
+#!/bin/bash
+
+### Default programs: ###
+export EDITOR="vim"
+export TERMINAL="kitty"
+export BROWSER="firefox"
+export READER="zathura"
+export GPG_TTY=$(tty)
+export QT_QPA_PLATFORMTHEME=qt5ct
+
+
+### ~/ Clean-up: ###
+export XDG_CONFIG_HOME="$HOME/.config";
+export XDG_CACHE_HOME="$HOME/.cache";
+export XDG_DATA_HOME="$HOME/.local/share";
+export XDG_STATE_HOME="$HOME/.local/share";
+
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc";
+export SSB_HOME="$XDG_DATA_HOME/zoom"; # very suspicious
+export WGETRC="$XDG_CONFIG_HOME/wgetrc";
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export LESSHISTFILE="-"
+export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+# export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+# export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export HISTFILE="$XDG_STATE_HOME"/bash/history
+export CALCHISTFILE="$XDG_CACHE_HOME"/calc_history
+export MYSQL_HISTFILE="$XDG_DATA_HOME"/mysql_history
+export SQLITE_HISTORY=$XDG_DATA_HOME/sqlite_history
+export LYNX_CFG="$XDG_CONFIG_HOME/lynx/lynx.cfg"
+export LYNX_LSS="$XDG_CONFIG_HOME/lynx/lynx.lss"
+
+
+### Aliases: ###
+alias ll='exa -alF --group-directories-first'
+alias la='exa -A --group-directories-first'
+alias l='exa -CF --group-directories-first'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# making 'rm' safer
+alias rm="rm -i"
+
+# convenience program aliases
+useragent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_0) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.118    0.79 Safari/537.1 Lynx"
+alias lynx="lynx --useragent='$useragent'"
+alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
+alias yt="youtube-dl --add-metadata -ic" # Download video link
+alias yta="youtube-dl --add-metadata -xic" # Download audio only 
+alias ccat="highlight --out-format=ansi" # color cat
+alias journalctl='journalctl --utc -o short-precise --no-hostname'
+alias ssh="kitty +kitten ssh"
+alias x2goclient="x2goclient --home=$HOME/.config"
+alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
+
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
+
+

@@ -1,5 +1,6 @@
 #!/bin/bash
 # ~/.bashrc: executed by bash(1) for non-login shells.
+[ -f ~/.config/env ] && . "$HOME/.config/env"
 
 ### DEFAULTS (mostly: see bash(1) for more options) ###
 # If not running interactively, don't do anything
@@ -109,60 +110,3 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 
 # custom PATH settings
 export PATH="$HOME/Documents/Grading/GradingUtilities:$PATH"; 
-
-# useful lynx settings for execution
-export LYNX_CFG="$HOME/.config/lynx/lynx.cfg"
-export LYNX_LSS="$HOME/.config/lynx/lynx.lss"
-
-# XDG base environment variables
-export XDG_CONFIG_HOME="$HOME/.config";
-export XDG_CACHE_HOME="$HOME/.cache";
-export XDG_DATA_HOME="$HOME/.local/share";
-export XDG_STATE_HOME="$HOME/.local/share";
-
-export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc";
-export SSB_HOME="$XDG_DATA_HOME/zoom"; # very suspicious
-export WGETRC="$XDG_CONFIG_HOME/wgetrc";
-
-# QT graphical application theme env variable
-export QT_QPA_PLATFORMTHEME=qt5ct
-
-### CUSTOM ALIASES ###
-
-[ -f ~/.bash_aliases ] && . ~/.bash_aliases
-
-# improved (with exa) ls aliases
-alias ll='exa -alF --group-directories-first'
-alias la='exa -A --group-directories-first'
-alias l='exa -CF --group-directories-first'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-
-# making 'rm' safer
-alias rm="rm -i"
-
-# convenience program aliases
-useragent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_0) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.118    0.79 Safari/537.1 Lynx"
-alias lynx="lynx --useragent='$useragent'"
-alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
-alias yt="youtube-dl --add-metadata -ic" # Download video link
-alias yta="youtube-dl --add-metadata -xic" # Download audio only 
-alias ccat="highlight --out-format=ansi" # color cat
-alias journalctl='journalctl --utc -o short-precise --no-hostname'
-alias ssh="kitty +kitten ssh"
-
-### CUSTOM ENVIRONMENT STUFF ###
-set -o vi
-. "$HOME/.cargo/env"
-
-# Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/"
-[ -n "$PS1" ] && \
-    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-        eval "$("$BASE16_SHELL/profile_helper.sh")"
-
-# GPG Agent
-export GPG_TTY=$(tty)
