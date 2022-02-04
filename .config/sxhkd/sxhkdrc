@@ -59,11 +59,19 @@ super + Escape
 
 # pass manager launcher
 super + shift + {_, alt} + p
-	rofi-pass {_,--insert}
+	bash -c -l "rofi-pass {_,--insert}"
 
 # bluetooth launcher
 super + alt + space
     rofi-bluetooth
+
+# ranger
+super + r
+    kitty -e "ranger"
+
+# nautilus
+super + shift + r
+    nautilus
 
 # make sxhkd reload its configuration files:
 super + shift + Escape

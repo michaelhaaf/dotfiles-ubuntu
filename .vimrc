@@ -74,8 +74,12 @@ endif
 "           COMMANDS            "
 "==============================="
 
+" Navigate wrapped lines
+nmap <silent> <C-j> gj
+nmap <silent> <C-k> gk
+
 " Enable spell checking
-map <leader>s :setlocal spell! spelllang=en_au<CR>
+map <leader>s :setlocal spell! spelllang=en_ca<CR>
 
 " Shellcheck
 map <leader>S :!clear && shellcheck %<CR>
@@ -103,6 +107,4 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
-" Start NERDTree and leave the cursor in it.
-autocmd VimEnter * NERDTree
 

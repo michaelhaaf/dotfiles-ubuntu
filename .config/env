@@ -15,6 +15,7 @@ export XDG_CACHE_HOME="$HOME/.cache";
 export XDG_DATA_HOME="$HOME/.local/share";
 export XDG_STATE_HOME="$HOME/.local/share";
 
+export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc";
 export SSB_HOME="$XDG_DATA_HOME/zoom"; # very suspicious
 export WGETRC="$XDG_CONFIG_HOME/wgetrc";
