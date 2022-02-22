@@ -1,16 +1,15 @@
-
 # wm independent hotkeys
 
 # show help
-super + @slash
+super + slash
 	exec sxhkd-help
 
 # screenshot to file
-super + alt + @x
+super + alt + x
 	scrot -s
 
 # screenshot to clipboard
-super + shift + @x 
+super + shift + x 
 	scrot -s -e 'xclip -selection clipboard -t image/png -i $f'
 
 # volume up

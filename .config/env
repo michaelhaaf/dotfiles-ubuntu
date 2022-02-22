@@ -1,5 +1,9 @@
 #!/bin/bash
 
+### Environment ###
+export BASH_ENV="$HOME/.bash_profile"
+export ENV="$HOME/.bash_profile"
+
 ### Default programs: ###
 export EDITOR="vim"
 export TERMINAL="kitty"

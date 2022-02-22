@@ -12,3 +12,7 @@
 pkg/
 src/
 *.swp
+.config/base16-shell/active_theme.sh
+.config/bspwm/bspwm_colors.sh
+.config/nvim/colors/base16.vim
+.config/rofi/themes/colors.rasi

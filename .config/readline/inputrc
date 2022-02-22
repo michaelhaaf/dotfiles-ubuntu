@@ -1,14 +1,38 @@
+# https://unix.stackexchange.com/a/447638, see also `man bash`
 # https://wiki.archlinux.org/title/Readline
+# https://github.com/whiteinge/dotfiles/blob/master/.inputrc
+
 set editing-mode vi
 
 set show-mode-in-prompt on
 set vi-ins-mode-string \1\e[6 q\2
 set vi-cmd-mode-string \1\e[2 q\2
 
-# https://unix.stackexchange.com/a/447638, see also `man bash`
+# Show all available completion options on second tab.
 set show-all-if-ambiguous on
 set show-all-if-unmodified on
+
+# Show completion options on first tab; begin cycling on second tab.
 set menu-complete-display-prefix on
 "\t": menu-complete
 "\e[Z": menu-complete-backward
+
+# Prompt to show many completions (larger default for larger terminals).
+set completion-query-items 500
+
+# Avoid duplicating text when completing an option mid-word.
+set skip-completed-text on
+
+# Show symbols to denote file type of each completion option.
+set visible-stats on
+
+# Show completion options in color. Also highlight the search prefix.
+set colored-stats on
+set colored-completion-prefix on
+
+# Append directories with a slash.
+set mark-directories on
+
+# Append symlinks with an at.
+set mark-symlinked-directories on
 

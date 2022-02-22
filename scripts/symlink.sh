@@ -59,6 +59,7 @@ linkDotfile '.config/base16-shell/active_theme.sh'
 linkDotfile '.config/nvim'
 linkDotfile '.config/picom.conf'
 linkDotfile '.config/env'
+linkDotfile '.config/readline/inputrc'
 
 linkDotfile '.local/bin/duck'
 linkDotfile '.local/bin/sxhkd-help'

@@ -1,6 +1,8 @@
 #!/bin/bash
 # ~/.bashrc: executed by bash(1) for non-login shells.
 [ -f ~/.config/env ] && . "$HOME/.config/env"
+[ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
+[ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
 
 ### DEFAULTS (mostly: see bash(1) for more options) ###
 # If not running interactively, don't do anything
@@ -102,11 +104,12 @@ esac
 
 ### CUSTOM EXPORTS ###
 
-# use vim for man
-export MANPAGER="vim -M +MANPAGER -"
+# use vim for man, don't have file numbers so it displays properly
+export MANPAGER='vim -c "set relativenumber!" -c "set nu!" -M +MANPAGER -'
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # custom PATH settings
 export PATH="$HOME/Documents/Grading/GradingUtilities:$PATH"; 
+export PATH="$HOME/Repositories/mfa-workbook/scripts:$PATH"; 
