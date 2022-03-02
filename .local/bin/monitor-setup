@@ -6,20 +6,16 @@
 pkill polybar
 
 # hardcoded laptop primary
-primary='DP-4'	
+primary='DP-4'
 
 # all other monitors
 monitors=($(xrandr -q | grep -v "${primary}" | awk '/\<connected\>/ {print $1}'))
-#resolutions=$(xrandr -q | grep -v "${primary}" | awk '/\<connected\>/ {getline; print $1}') 
-xrandr --output "$primary" --auto  --mode 1920x1080 --primary 
+#resolutions=$(xrandr -q | grep -v "${primary}" | awk '/\<connected\>/ {getline; print $1}')
+xrandr --output "$primary" --auto  --mode 1920x1080 --primary
 
 # there's really only ever maximum two monitors connected, one in DP one in HDMI
 # the trick here is just figuring out WHICH DP or HDMI device, which is handled above.
-for monitor in "${monitors[@]}"; do 
+for monitor in "${monitors[@]}"; do
 	[[ "$monitor" =~ ^DP- ]] && xrandr --output "$monitor" --auto --left-of "$primary"
 	[[ "$monitor" =~ ^HDMI- ]] && xrandr --output "$monitor" --auto --mode 1920x1200 --right-of "$primary"
 done
-
-
-
-

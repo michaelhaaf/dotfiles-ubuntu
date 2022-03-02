@@ -1,3 +1,4 @@
 #!/bin/bash
-device="$(v4l2-ctl --list-devices | grep -A1 'PC Camera' | sed 's/^[[:space:]]//' | tail -n 1)"
-pkill -f "$device" || mpv --geometry=-0-0 --autofit=30% --demuxer-lavf-format=video4linux2 --demuxer-lavf-o-set=input_format=mjpeg "av://v4l2:$device" --profile=low-latency
+set -ue
+device=$(find /dev/v4l/by-id/ \( -name "*Camera*" -and -name "*index0" \))
+kill -15 "$(pgrep -f "$device")" || mpv --geometry=-0-0 --autofit=30% --demuxer-lavf-format=video4linux2 --demuxer-lavf-o-set=input_format=mjpeg "av://v4l2:$device" --profile=low-latency
