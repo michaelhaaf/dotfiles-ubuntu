@@ -39,7 +39,8 @@ Plug 'https://github.com/plasticboy/vim-markdown'
 Plug 'https://github.com/junegunn/limelight.vim'
 Plug 'https://github.com/junegunn/goyo.vim'
 
-Plug 'vimwiki/vimwiki'
+Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+Plug 'https://github.com/tools-life/taskwiki'
 
 Plug 'preservim/nerdtree'
 
@@ -87,6 +88,9 @@ map <leader>S :!clear && shellcheck %<CR>
 " compiling:
 autocmd Filetype rmd map <F5> :!echo<space>"require(rmarkdown);<space>render('<c-r>%')"<space>\|<space>R<space>--vanilla<enter>
 
+" paste buffer:
+vmap <leader>y :w! /tmp/vitmp<CR>
+nmap <leader>p :r! cat /tmp/vitmp<CR>
 
 set printfont=Courier:h8
 command! -range=% HardcopyPdf <line1>,<line2> hardcopy > %.ps | !ps2pdf %.ps && rm %.ps

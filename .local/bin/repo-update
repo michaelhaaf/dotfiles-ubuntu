@@ -3,4 +3,10 @@
 cd "$1" || exit
 git add .
 git commit -a -m "updated on $( date +'%Y%m%d_%H:%M' )"
-git push
+
+expect -c "
+spawn git push
+expect \"Enter passphrase:\" {
+  send \"$(pass keys/ssh)\n\"
+}
+"

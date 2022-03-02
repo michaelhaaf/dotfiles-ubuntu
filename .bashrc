@@ -1,8 +1,7 @@
 #!/bin/bash
 # ~/.bashrc: executed by bash(1) for non-login shells.
+
 [ -f ~/.config/env ] && . "$HOME/.config/env"
-[ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
-[ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
 
 ### DEFAULTS (mostly: see bash(1) for more options) ###
 # If not running interactively, don't do anything
@@ -110,6 +109,23 @@ export MANPAGER='vim -c "set relativenumber!" -c "set nu!" -M +MANPAGER -'
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# custom PATH settings
-export PATH="$HOME/Documents/Grading/GradingUtilities:$PATH"; 
-export PATH="$HOME/Repositories/mfa-workbook/scripts:$PATH"; 
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/michael/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/michael/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/michael/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/michael/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<

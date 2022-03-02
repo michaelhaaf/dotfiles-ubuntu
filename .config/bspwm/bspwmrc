@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source "${HOME}/.config/env"
 sxhkd &
 monitor-setup
 
