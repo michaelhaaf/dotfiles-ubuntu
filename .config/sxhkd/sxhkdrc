@@ -63,6 +63,7 @@ super + alt + c
 super + alt + space
     rofi-bluetooth
 
+##### SUPER + CTRL #####
 
 ##### SUPER + SHIFT #####
 # screenshot to clipboard
@@ -81,9 +82,13 @@ super + shift + b
 super + shift + Escape
 	pkill -USR1 -x sxhkd
 
-# nautilus
+# floating ranger
 super + shift + r
-    nautilus
+    kitty --class start_floating "ranger"
+
+# floating terminal
+super + shift + Return
+    kitty --class start_floating
 
 
 ##### BSPWM HOTKEYS #####
