@@ -1,16 +1,8 @@
-# wm independent hotkeys
+##### SUPER #####
 
 # show help
 super + slash
 	exec sxhkd-help
-
-# screenshot to file
-super + alt + x
-	scrot -s
-
-# screenshot to clipboard
-super + shift + x 
-	scrot -s -e 'xclip -selection clipboard -t image/png -i $f'
 
 # volume up
 super + Up
@@ -20,33 +12,9 @@ super + Up
 super + Down
 	pulsemixer --change-volume -1
 
-# volume mute toggle
-super + shift + m
-	pulsemixer --toggle-mute	
-
-# brightness up
-super + alt + Up
-    brightness-adj inc
-
-# brightness down
-super + alt + Down
-    brightness-adj dec
-
-# toggle compositor
-super + shift + b
-    exec compositoggle 
-
 # terminal emulator
 super + Return
 	kitty
-
-# webcam/tetriscam/reset
-super + alt + {c, t, v}
-	exec {camtoggle,tetristoggle,camreset}
-
-# system suspend/reboot/shutdown
-super + {_, alt, shift} + BackSpace
-	systemctl {suspend,reboot,poweroff}
 
 # program launcher
 super + space
@@ -56,28 +24,69 @@ super + space
 super + Escape
     rofi -show window
 
+# ranger
+super + r
+    kitty "ranger"
+
+
+##### SUPER + ALT #####
+
+# screenshot to file
+super + alt + @x
+	scrot -s
+
+# brightness up
+super + alt + Up
+    brightness-adj inc
+
+# brightness down
+super + alt + Down
+    brightness-adj dec
+
+# webcam/tetriscam/reset
+super + alt + {w, t, v}
+	exec {camtoggle,tetristoggle,camreset}
+
+# system suspend/reboot/shutdown
+super + {_, alt, shift} + BackSpace
+	systemctl {suspend,reboot,poweroff}
+
 # pass manager launcher
-super + shift + {_, alt} + p
-	bash -c -l "rofi-pass {_,--insert}"
+super + alt + {_, shift} + p
+	rofi-pass {_,--insert}
+
+# calc launcher
+super + alt + c
+    rofi -show calc -modi calc -no-show-match -no-sort -calc-command "echo -n '{result}' | xclip"
 
 # bluetooth launcher
 super + alt + space
     rofi-bluetooth
 
-# ranger
-super + r
-    kitty -e "ranger"
 
-# nautilus
-super + shift + r
-    nautilus
+##### SUPER + SHIFT #####
+# screenshot to clipboard
+super + shift + @x
+	scrot -s -e 'xclip -selection clipboard -t image/png -i $f'
+
+# volume mute toggle
+super + shift + m
+	pulsemixer --toggle-mute	
+
+# toggle compositor
+super + shift + b
+    exec compositoggle 
 
 # make sxhkd reload its configuration files:
 super + shift + Escape
 	pkill -USR1 -x sxhkd
 
-# bspwm hotkeys
-#
+# nautilus
+super + shift + r
+    nautilus
+
+
+##### BSPWM HOTKEYS #####
 
 # quit/restart bspwm
 super + alt + {q,r}
@@ -103,9 +112,8 @@ super + g
 super + shift + g
 	bsp-layout cycle --layouts tall,wide,rtall,rwide,grid,rgrid,even,tile
 
-#
-# state/flags
-#
+
+##### STATE/FLAGS #####
 
 # set the window state (tiled, pseudo, floating, fullscreen)
 super + {t,shift + t,s,f}
@@ -115,9 +123,8 @@ super + {t,shift + t,s,f}
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
 
-#
-# focus/swap
-#
+
+##### FOCUS/SWAP #####
 
 # focus the node in the given direction
 super + {_,shift + }{h,j,k,l}
@@ -149,9 +156,8 @@ super + {o,i}
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
-#
-# preselect
-#
+
+##### PRESELECT #####
 
 # preselect the direction
 super + ctrl + {h,j,k,l}
@@ -169,9 +175,8 @@ super + ctrl + space
 super + ctrl + shift + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
-#
-# move/resize
-#
+
+##### MOVE/RESIZE #####
 
 # expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
