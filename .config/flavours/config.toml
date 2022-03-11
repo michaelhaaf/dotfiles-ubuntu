@@ -70,3 +70,9 @@ rewrite = true
 file = "~/.config/qt5ct/colors/colors.conf"
 template = "qt5ct"
 rewrite = true
+
+[[item]]
+file = "~/.config/dunst/dunstrc
+template = "dunst"
+start = "# start flavours"
+end = "# end flavours"
