@@ -1,4 +1,6 @@
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+let base16colorspace=256  " Access colors present in 256 colorspace
+
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
@@ -34,7 +36,6 @@ Plug 'chrisbra/unicode.vim'
 
 Plug 'https://github.com/godlygeek/tabular'
 Plug 'https://github.com/plasticboy/vim-markdown'
-" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 Plug 'https://github.com/junegunn/limelight.vim'
 Plug 'https://github.com/junegunn/goyo.vim'
