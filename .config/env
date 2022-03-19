@@ -6,6 +6,7 @@ export ENV="$HOME/.bash_profile"
 
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/share/cargo/bin:$PATH"
 export PATH="$HOME/Documents/Grading/GradingUtilities:$PATH"; 
 export PATH="$HOME/Repositories/mfa-workbook/scripts:$PATH"; 
 
@@ -32,10 +33,12 @@ export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export LESSHISTFILE="-"
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
-export CONDARC="$XDG_CONFIG_HOME/conda/condarc"
+export CONDARC="$HOME/miniconda3/.condarc"
+export CONDA_ENVS_PATH="$HOME/miniconda3/envs/"
+export CONDA_PKGS_DIRS="$HOME/miniconda3/pkgs/"
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
-# export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
-# export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export HISTFILE="$XDG_STATE_HOME"/bash/history
 export CALCHISTFILE="$XDG_CACHE_HOME"/calc_history
 export MYSQL_HISTFILE="$XDG_DATA_HOME"/mysql_history
@@ -67,6 +70,8 @@ alias ccat="highlight --out-format=ansi" # color cat
 alias journalctl='journalctl --utc -o short-precise --no-hostname'
 alias x2goclient="x2goclient --home=$HOME/.config"
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
+alias vwiki='vim -c VimwikiIndex'
+
 
 
 # default ssh to use tmux for remote sessions

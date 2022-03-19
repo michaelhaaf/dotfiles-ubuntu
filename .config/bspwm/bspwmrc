@@ -1,18 +1,14 @@
 #!/bin/bash
+# shellcheck source=/home/michael/.config/env
 
 source "${HOME}/.config/env"
 pgrep -x sxhkd > /dev/null || sxhkd &
 monitor-setup
 
 bspc config remove_unplugged_monitors true
-monitors=($(bspc query -M | uniq))
+mapfile -t monitors < <(bspc query -M | uniq)
 
-# set colours to match pic
 pic=$(find ~/Pictures/Wallpapers/ | sort -R | tail -1)
-#flavours generate dark $pic && flavours apply generated
-flavours apply horizon-dark
-
-# TODO: refactor, this could be much better lol
 nitrogen --head=0 --set-zoom-fill "$pic"
 [[ "${#monitors[@]}" = 1 ]] && \
 	bspc monitor "${monitors[0]}" -d 1 2 3 4 5 6 7 8 9 10
@@ -27,8 +23,8 @@ nitrogen --head=0 --set-zoom-fill "$pic"
 	nitrogen --head=1 --set-zoom-fill "$pic" && \
 	nitrogen --head=2 --set-zoom-fill "$pic"
 
-bspc config border_width         2
-bspc config window_gap           7
+bspc config border_width         4
+bspc config window_gap           8
 
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true

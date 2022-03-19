@@ -47,8 +47,8 @@ end = "; end flavours"
 [[item]]
 file = "~/.config/bspwm/bspwm_colors.sh"
 template = "bspwm"
-hook = "sh -c ~/.config/bspwm/bswpm_colors.sh"
 rewrite = true
+hook = "~/.config/bspwm/bspwm_colors.sh"
 
 [[item]]
 file = "~/.Xresources"
@@ -60,11 +60,7 @@ file = "~/.config/kitty/colors-256.conf"
 template = "kitty"
 subtemplate = "default-256"
 rewrite = true
-
-[[item]]
-file = "~/.config/base16-shell/active_theme.sh"
-template = "shell"
-rewrite = true
+hook = "kitty @ set-colors --all ~/.config/kitty/colors-256.conf"
 
 [[item]]
 file = "~/.config/qt5ct/colors/colors.conf"
@@ -72,7 +68,6 @@ template = "qt5ct"
 rewrite = true
 
 [[item]]
-file = "~/.config/dunst/dunstrc
+file = "~/.config/dunst/dunstrc"
 template = "dunst"
-start = "# start flavours"
-end = "# end flavours"
+hook = "sh -c ~/.config/dunst/reload"
