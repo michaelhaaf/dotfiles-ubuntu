@@ -1,0 +1,24 @@
+## Copyright (C) 2020-2021 Aditya Shakya <adi1090x@gmail.com>
+## Modified by Michael Haaf <michael.haaf@gmail.com>
+## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[colors]
+base00 = ee232136
+base01 = 2a273f
+base02 = 393552
+base03 = 59546d
+base04 = 817c9c
+base05 = e0def4
+base06 = f5f5f7
+base07 = d9d7e1
+base08 = eb6f92
+base09 = 56949f
+base0A = f6c177
+base0B = ea9a97
+base0C = 3e8fb0
+base0D = 9ccfd8
+base0E = c4a7e7
+base0F = b9b9bc
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_

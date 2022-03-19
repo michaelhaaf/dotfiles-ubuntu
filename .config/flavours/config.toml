@@ -38,11 +38,10 @@ subtemplate = "colors"
 rewrite = true
 
 [[item]]
-file = "~/.config/polybar/config"
+file = "~/.config/polybar/colors"
 template = "polybar"
 hook = "polybar-msg cmd restart"
-start = "; start flavours"
-end = "; end flavours"
+rewrite = true
 
 [[item]]
 file = "~/.config/bspwm/bspwm_colors.sh"

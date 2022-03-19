@@ -16,39 +16,15 @@
 ;
 ;==========================================================
 
+;; File imports
+include-file = ~/.config/polybar/colors
 
-; start flavours
-[colors]
-base00 = ee232136
-base01 = 2a273f
-base02 = 393552
-base03 = 59546d
-base04 = 817c9c
-base05 = e0def4
-base06 = f5f5f7
-base07 = d9d7e1
-base08 = eb6f92
-base09 = ea9a97
-base0A = f6c177
-base0B = 56949f
-base0C = 3e8fb0
-base0D = 9ccfd8
-base0E = c4a7e7
-base0F = b9b9bc
-; end flavours
-
-background = ${colors.base00}
-background-alt = ${colors.base01} 
-foreground = ${colors.base04}
-foreground-alt = ${colors.base05}
-
-; base16 conventions (not literal colours)
 red = ${colors.base08}
-orange = ${colors.base09}
+green = ${colors.base09}
 yellow = ${colors.base0A}
-green = ${colors.base0B}
-teal = ${colors.base0C}
-blue = ${colors.base0D}
+orange = ${colors.base0B}
+blue = ${colors.base0C}
+teal = ${colors.base0D}
 purple = ${colors.base0E}
 brown = ${colors.base0F}
 
@@ -56,17 +32,22 @@ primary = ${colors.purple}
 secondary = ${colors.green}
 alert = ${colors.red}
 
+background = ${colors.base00}
+background-alt = ${colors.base01} 
+foreground = ${colors.purple}
+foreground-alt = ${colors.green}
+
 [bar/example]
 monitor = ${env:MONITOR:}
 width = 100%
 height = 30
 radius = 0.0
-fixed-center = false
+fixed-center = true
 
-background = ${colors.base00}
-background-alt = ${colors.base01} 
-foreground = ${colors.base04}
-foreground-alt = ${colors.base05}
+background = ${colors.background}
+background-alt = ${colors.background-alt} 
+foreground = ${colors.foreground}
+foreground-alt = ${colors.foreground-alt}
 
 line-size = 3
 line-color = ${colors.red}
@@ -74,23 +55,28 @@ line-color = ${colors.red}
 border-size = 0
 border-color = ${colors.foreground-alt}
 
-padding-left = 1
-padding-right = 1
+padding-left = 2
+padding-right = 2
 
 module-margin-left = 1
-module-margin-right = 1
+module-margin-right = 2
 
-font-0 = monospace:size=10;0
-font-1 = unifont:fontformat=truetype:size=12;0
-font-2 = siji:size=12;0
+;; FONTS (notes that these are 1-indexed when used, NOT 0)
+; text
+font-0 = "Ubuntu Mono:style=Regular:antialias=true:pixelsize=10;3"
+; icons
+font-1 = "Iosevka Nerd Font:size=10:antialias=true;3"
+; bigger icons
+font-2 = "Iosevka Nerd Font:size=12:antialias=true;3"
+font-3 = "Ubuntu Mono:style=Regular:antialias=true:pixelsize=10;3"
 
-modules-left = bspwm
-modules-center = xwindow
-modules-right = pulseaudio filesystem memory cpu temperature date powermenu
+modules-left = date xwindow
+modules-center = bspwm
+modules-right = pulseaudio filesystem memory cpu temperature powermenu
 ; TODO: customize for laptop (batery, wifi)
 
-tray-position = right
-tray-padding = 2
+; tray-position = right
+; tray-padding = 2
 
 wm-restack = bspwm
 
@@ -104,9 +90,13 @@ cursor-scroll = ns-resize
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:75:...%
-label-underline = ${colors.secondary}
 
+format-prefix = "  "
+format-prefix-font = 3
+format-prefix-foreground = ${colors.foreground-alt}
+
+label = %title:0:40:...%
+label-font = 4
 
 [module/filesystem]
 type = internal/fs
@@ -114,32 +104,33 @@ interval = 25
 
 mount-0 = /
 
-format-mounted-prefix = " "
+format-mounted-prefix = " "
 format-mounted-prefix-foreground = ${colors.foreground-alt}
-format-mounted-underline = ${colors.primary}
+format-mounted-prefix-font = 3
 
 label-mounted = %percentage_used%%
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
+label-unmounted = 
+label-unmounted-foreground = ${colors.red}
 
 click-right = nautilus /
 
 [module/bspwm]
 type = internal/bspwm
+format = <label-state> <label-mode>
+format-font = 2
 
-label-focused = 
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
+label-focused = 
+label-focused-foreground = ${colors.foreground}
 label-focused-padding = 1 
 
-label-occupied = 
+label-occupied = 
 label-occupied-padding = 1
 
-label-urgent = !
+label-urgent = 
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 1
 
-label-empty = 
+label-empty = 
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 1
 
@@ -163,9 +154,9 @@ label-song-ellipsis = true
 [module/cpu]
 type = internal/cpu
 interval = 0.5
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.primary}
+format-prefix-font = 3
 label = %percentage:2%%
 
 click-right = gnome-system-monitor
@@ -173,16 +164,16 @@ click-right = gnome-system-monitor
 [module/memory]
 type = internal/memory
 interval = 0.5
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.primary}
+format-prefix-font = 3
 label = %percentage_used%%
 
 click-right = gnome-system-monitor
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 1.0
 
 date =
 date-alt = " %Y-%m-%d"
@@ -190,9 +181,9 @@ date-alt = " %Y-%m-%d"
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix = 
+format-prefix = ""
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.primary}
+format-prefix-font = 3
 
 label = %date% %time%
 
@@ -200,48 +191,28 @@ label = %date% %time%
 type = internal/pulseaudio
 
 format-volume = <ramp-volume> <label-volume>
-format-volume-underline = ${colors.primary}
 
 label-volume = %percentage%%
 label-volume-foreground = ${colors.foreground}
 
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-4 = 
+ramp-volume-5 = 
+ramp-volume-6 = 
+ramp-volume-7 = 
+ramp-volume-8 = 
+ramp-volume-9 = 
 ramp-volume-foreground = ${colors.foreground-alt}
+ramp-volume-font = 3
 
-label-muted =  muted
+label-muted = 婢 muted
 label-muted-foreground = ${colors.foreground-alt}
+label-muted-font = 3
 
 click-right = pavucontrol
-
-[module/alsa]
-type = internal/alsa
-
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL
-label-volume-foreground = ${colors.foreground}
-
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
@@ -250,14 +221,11 @@ adapter = ADP1
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = ${colors.primary}
 
 format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
@@ -283,18 +251,24 @@ thermal-zone = 2
 warn-temperature = 85
 
 format = <ramp> <label>
-format-underline = ${colors.primary}
 format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
 
 label = %temperature-c%
 label-warn = %temperature-c%
-label-warn-foreground = ${colors.alert}
+label-warn-foreground = ${colors.orange}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-5 = 
+ramp-6 = 
+ramp-7 = 
+ramp-8 = 
+ramp-9 = 
 ramp-foreground = ${colors.foreground-alt}
+ramp-font = 3
 
 click-right = gnome-system-monitor
 
@@ -305,7 +279,7 @@ expand-right = true
 
 format-spacing = 1
 
-label-open = 
+label-open = ⏻
 label-open-foreground = ${colors.red}
 label-close =  cancel
 label-close-foreground = ${colors.red}
