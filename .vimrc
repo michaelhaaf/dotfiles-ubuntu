@@ -1,5 +1,6 @@
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 let base16colorspace=256  " Access colors present in 256 colorspace
+let &t_ut=''
 
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -33,6 +34,8 @@ let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 Plug 'chrisbra/unicode.vim'
+Plug 'chriskempson/base16-vim'
+Plug 'fladson/vim-kitty'
 
 Plug 'https://github.com/godlygeek/tabular'
 Plug 'https://github.com/plasticboy/vim-markdown'
@@ -48,7 +51,7 @@ Plug 'preservim/nerdtree'
 call plug#end()
 
 
-set background=dark
+" set background=dark
 
 set number
 set relativenumber
@@ -104,6 +107,42 @@ try
 catch
     " no such file? no problem; just ignore it.
 endtry
+
+"==============================="
+"           COLORSCH            "
+"==============================="
+"
+" TODO: rename back to something generic so it's possible to switch dynamic
+colorscheme base16-rose-pine-moon-b16
+
+highlight Normal guibg=NONE ctermbg=NONE
+highlight Comment guibg=NONE ctermbg=NONE
+highlight Constant guibg=NONE ctermbg=NONE
+highlight Special guibg=NONE ctermbg=NONE
+highlight Identifier guibg=NONE ctermbg=NONE
+highlight Statement guibg=NONE ctermbg=NONE
+highlight PreProc guibg=NONE ctermbg=NONE
+highlight Type guibg=NONE ctermbg=NONE
+highlight Underlined guibg=NONE ctermbg=NONE
+highlight Todo guibg=NONE ctermbg=NONE
+highlight String guibg=NONE ctermbg=NONE
+highlight Function guibg=NONE ctermbg=NONE
+highlight Conditional guibg=NONE ctermbg=NONE
+highlight Repeat guibg=NONE ctermbg=NONE
+highlight Operator guibg=NONE ctermbg=NONE
+highlight Structure guibg=NONE ctermbg=NONE
+highlight LineNr guibg=NONE ctermbg=NONE
+highlight NonText guibg=NONE ctermbg=NONE
+highlight SignColumn guibg=NONE ctermbg=NONE
+highlight CursorLineNr guibg=NONE ctermbg=NONE
+highlight EndOfBuffer guibg=NONE ctermbg=NONE
+
+highlight CursorColumn cterm=NONE ctermbg=NONE
+highlight CursorLine cterm=NONE ctermbg=NONE
+highlight StatusLine guibg=NONE ctermbg=NONE
+
+set cursorline
+
 
 "==============================="
 "           NERDTree            "
