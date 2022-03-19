@@ -1,38 +1,38 @@
 set selection-clipboard clipboard
 
 # start flavours
-# Base16 Horizon Dark
-# Author: Michaël Ball (http://github.com/michael-ball/)
+# Base16 Rosé Pine Moon Base16
+# Author: Michael Haaf <michael.haaf@gmail.com>
 
-set default-bg                  "#1C1E26"
-set default-fg                  "#232530"
+set default-bg                  "#232136"
+set default-fg                  "#2a273f"
 
-set statusbar-fg                "#9DA0A2"
-set statusbar-bg                "#2E303E"
+set statusbar-fg                "#817c9c"
+set statusbar-bg                "#393552"
 
-set inputbar-bg                 "#1C1E26"
-set inputbar-fg                 "#E3E6EE"
+set inputbar-bg                 "#232136"
+set inputbar-fg                 "#d9d7e1"
 
-set notification-bg             "#1C1E26"
-set notification-fg             "#E3E6EE"
+set notification-bg             "#232136"
+set notification-fg             "#d9d7e1"
 
-set notification-error-bg       "#1C1E26"
-set notification-error-fg       "#E93C58"
+set notification-error-bg       "#232136"
+set notification-error-fg       "#eb6f92"
 
-set notification-warning-bg     "#1C1E26"
-set notification-warning-fg     "#E93C58"
+set notification-warning-bg     "#232136"
+set notification-warning-fg     "#eb6f92"
 
-set highlight-color             "#EFB993"
-set highlight-active-color      "#DF5273"
+set highlight-color             "#f6c177"
+set highlight-active-color      "#9ccfd8"
 
-set completion-bg               "#232530"
-set completion-fg               "#DF5273"
+set completion-bg               "#2a273f"
+set completion-fg               "#9ccfd8"
 
-set completion-highlight-fg     "#E3E6EE"
-set completion-highlight-bg     "#DF5273"
+set completion-highlight-fg     "#d9d7e1"
+set completion-highlight-bg     "#9ccfd8"
 
-set recolor-lightcolor          "#1C1E26"
-set recolor-darkcolor           "#DCDFE4"
+set recolor-lightcolor          "#232136"
+set recolor-darkcolor           "#f5f5f7"
 
 set recolor                     "false"
 set recolor-keephue             "false"
