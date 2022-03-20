@@ -27,6 +27,10 @@ alt + Tab
 # ranger
 super + r
     kitty --single-instance "ranger"
+    
+# vimwiki
+super + v
+    kitty --single-instance vim -c VimwikiIndex
 
 # alternate between the tiled and monocle layout
 super + m
@@ -140,6 +144,10 @@ super + shift + b
 # floating ranger
 super + shift + r
     kitty --single-instance --class start_floating "ranger"
+#
+# floating vimwiki
+super + shift + v
+    kitty --single-instance --class start_floating vim -c VimwikiIndex
 
 # floating terminal
 super + shift + Return
@@ -147,11 +155,11 @@ super + shift + Return
 
 # quit/restart bspwm
 super + shift + {q,e}
-	bspc {quit,wm -r}
+	bspc {quit,wm -r} && dunstify "bspwm reloaded"
 
 # make sxhkd reload its configuration files:
 super + shift + Tab
-	pkill -USR1 -x sxhkd && notify-send "sxhkd reloaded"
+	pkill -USR1 -x sxhkd && dunstify "sxhkd reloaded"
 
 # close and kill
 super + {_,shift + }w
