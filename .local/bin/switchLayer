@@ -1,0 +1,13 @@
+#!/bin/sh
+# from https://www.reddit.com/r/bspwm/comments/d4lnhx/is_it_possible_to_change_stacking_layers_order/f0iokup/
+
+set -e
+set -u
+
+if bspc query -N -n focused.normal > /dev/null; then
+        bspc node -l below
+elif bspc query -N -n focused.below > /dev/null; then
+        bspc node -l above
+else
+        bspc node -l normal
+fi

@@ -12,6 +12,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive' "git integration
+Plug 'tpope/vim-repeat'
 Plug 'wellle/targets.vim'
 
 let g:ale_completion_enabled = 1 " style fixer

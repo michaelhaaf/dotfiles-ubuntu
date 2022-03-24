@@ -61,12 +61,13 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    red=$(tput setaf 12)
+    red=$(tput setaf 01)
+    foam=$(tput setaf 12)
     yellow=$(tput setaf 11)
     purple=$(tput setaf 13)
     bold=$(tput bold)
     reset=$(tput sgr0)
-    PS1='${debian_chroot:+($debian_chroot)}\[$purple$bold\][\[$yellow$bold\]\u@\h \[$red$bold\]\W\[$purple$bold\]]\[$reset\]$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[$purple$bold\][\[$yellow$bold\]\u@\h \[$foam$bold\]\W\[$purple$bold\]]\[$reset\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi

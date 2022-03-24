@@ -35,7 +35,7 @@ alert = ${colors.red}
 background = ${colors.base00}
 background-alt = ${colors.base01} 
 foreground = ${colors.purple}
-foreground-alt = ${colors.green}
+foreground-alt = ${colors.teal}
 
 [bar/example]
 monitor = ${env:MONITOR:}
@@ -124,6 +124,7 @@ label-focused-foreground = ${colors.foreground}
 label-focused-padding = 1 
 
 label-occupied = 
+label-occupied-foreground = ${colors.foreground}
 label-occupied-padding = 1
 
 label-urgent = 

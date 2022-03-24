@@ -33,6 +33,7 @@ bspc config gapless_monocle      true
 bspc rule -a Zathura state=tiled
 bspc rule -a mpv state=floating sticky=on
 bspc rule -a start_floating state=floating
+bspc config external_rules_command "$(command -v external_rules)"
 
 # Mice bindings
 bspc config pointer_action1 move
