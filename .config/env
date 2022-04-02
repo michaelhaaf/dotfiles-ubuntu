@@ -48,6 +48,45 @@ export LYNX_LSS="$XDG_CONFIG_HOME/lynx/lynx.lss"
 export TASKDATA="$XDG_DATA_HOME/task/"
 export TASKRC="$XDG_CONFIG_HOME/task/taskrc"
 
+### Other env variables ###
+export BAT_THEME=base16
+
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_DEFAULT_OPTS='
+    --height 40% --layout=reverse --info inline --border --color --multi
+    --bind ctrl-d:page-down,ctrl-u:page-up
+'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS='--preview "bat --style=numbers --color=always {}"'  
+source "$XDG_CONFIG_HOME/fzf/colors"
+
+fman() {
+    man -k . | fzf -q "$1" --prompt='man> '  --preview $'echo {} | tr -d \'()\' | awk \'{printf "%s ", $2} {print $1}\' | xargs -r man | col -bx | bat -l man -p --color always' | tr -d '()' | awk '{printf "%s ", $2} {print $1}' | xargs -r man
+}
+
+function cd() {
+    if [[ "$#" != 0 ]]; then
+        builtin cd "$@" || exit
+        return
+    fi
+    while true; do
+        local lsd=$(echo ".." && ls -p | grep '/$' | sed 's;/$;;')
+        local dir="$(printf '%s\n' "${lsd[@]}" |
+            fzf --reverse --preview '
+                __cd_nxt="$(echo {})";
+                __cd_path="$(echo $(pwd)/${__cd_nxt} | sed "s;//;/;")";
+                echo $__cd_path;
+                echo;
+                ls -p --color=always "${__cd_path}";
+        ')"
+        [[ ${#dir} != 0 ]] || return 0
+        builtin cd "$dir" &> /dev/null
+    done
+}
+
+source /usr/share/doc/fzf/examples/key-bindings.bash
+source /usr/share/doc/fzf/examples/completion.bash
+
 ### Aliases: ###
 alias ll='exa -alF --group-directories-first'
 alias la='exa -A --group-directories-first'
@@ -71,8 +110,7 @@ alias journalctl='journalctl --utc -o short-precise --no-hostname'
 alias x2goclient="x2goclient --home=$HOME/.config"
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 alias vwiki='vim -c VimwikiIndex'
-
-
+alias icat="kitty +kitten icat --align=left"
 
 # default ssh to use tmux for remote sessions
 function ssh () {

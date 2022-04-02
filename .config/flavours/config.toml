@@ -70,3 +70,8 @@ rewrite = true
 file = "~/.config/dunst/dunstrc"
 template = "dunst"
 hook = "sh -c ~/.config/dunst/reload"
+
+[[item]]
+file = "~/.config/fzf/colors"
+template = "fzf"
+rewrite = true

@@ -1,19 +1,19 @@
 /**
- * Base16 Horizon Dark ROFI Color theme
+ * Base16 Rosé Pine Moon Base16 ROFI Color theme
  *
  * Authors
- *  Scheme: Michaël Ball (http://github.com/michael-ball/)
+ *  Scheme: Michael Haaf <michael.haaf@gmail.com>
  *  Template: Jordi Pakey-Rodriguez (https://github.com/0xdec), Andrea Scarpino (https://github.com/ilpianista)
  */
 
 * {
-    red:                         rgba ( 233, 60, 88, 100 % );
-    blue:                        rgba ( 223, 82, 115, 100 % );
-    lightfg:                     rgba ( 220, 223, 228, 100 % );
-    lightbg:                     rgba ( 35, 37, 48, 100 % );
-    foreground:                  rgba ( 203, 206, 208, 100 % );
-    background:                  rgba ( 28, 30, 38, 96 % );
-    background-color:            rgba ( 28, 30, 38, 0 % );
+    red:                         rgba ( 235, 111, 146, 100 % );
+    blue:                        rgba ( 156, 207, 216, 100 % );
+    lightfg:                     rgba ( 245, 245, 247, 100 % );
+    lightbg:                     rgba ( 42, 39, 63, 100 % );
+    foreground:                  rgba ( 224, 222, 244, 100 % );
+    background:                  rgba ( 35, 33, 54, 90 % );
+    background-color:            rgba ( 35, 33, 54, 0 % );
     separatorcolor:              @foreground;
     border-color:                @foreground;
     selected-normal-foreground:  @lightbg;

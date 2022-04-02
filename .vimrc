@@ -15,6 +15,9 @@ Plug 'tpope/vim-fugitive' "git integration
 Plug 'tpope/vim-repeat'
 Plug 'wellle/targets.vim'
 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 let g:ale_completion_enabled = 1 " style fixer
 let g:ale_fixers = {
 \    '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -26,10 +29,11 @@ Plug 'lervag/vimtex'
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
-set conceallevel=0
-let g:tex_conceal='abdmg'
+" set conceallevel=0
+" let g:tex_conceal='abdmg'
 
-Plug 'sirver/ultisnips'
+Plug 'sirver/ultisnips' | Plug 'honza/vim-snippets'
+let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
@@ -39,7 +43,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'fladson/vim-kitty'
 
 Plug 'https://github.com/godlygeek/tabular'
-Plug 'https://github.com/plasticboy/vim-markdown'
+Plug 'https://github.com/preservim/vim-markdown'
 
 Plug 'https://github.com/junegunn/limelight.vim'
 Plug 'https://github.com/junegunn/goyo.vim'
@@ -51,30 +55,14 @@ Plug 'preservim/nerdtree'
 
 call plug#end()
 
-
-" set background=dark
-
 set number
 set relativenumber
-set wildmenu
 set showcmd
-set ruler
 
-set autoindent
 set shiftwidth=4
 set expandtab
 set tabstop=4
 set cmdheight=2
-set hlsearch
-
-if has('filetype')
-  filetype indent plugin on
-endif
-
-if has('syntax')
-  syntax on
-endif
-
 
 "==============================="
 "           COMMANDS            "
@@ -101,10 +89,28 @@ set printfont=Courier:h8
 command! -range=% HardcopyPdf <line1>,<line2> hardcopy > %.ps | !ps2pdf %.ps && rm %.ps
 
 "==============================="
+"           FZF                 "
+"==============================="
+" fzf
+nnoremap <silent> <leader>o :Files<CR>
+nnoremap <silent> <leader>O :Files!<CR>
+nnoremap <silent> <leader> :History:<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>` :Marks<CR>
+nnoremap <silent> <F1> :Helptags<CR>
+inoremap <silent> <F1> <ESC>:Helptags<CR>
+noremap <silent> <leader>; :Commands<CR>
+nnoremap <silent> <leader>l :BLines<CR>
+inoremap <silent> <F3> <ESC>:Snippets<CR>
+nnoremap <silent> <F3> :Snippets<CR>
+
+
+"==============================="
 "           VIM WIKI            "
 "==============================="
 try
     source ~/vimwiki/vimwiki.vim
+    silent! iunmap <buffer> <Tab>
 catch
     " no such file? no problem; just ignore it.
 endtry

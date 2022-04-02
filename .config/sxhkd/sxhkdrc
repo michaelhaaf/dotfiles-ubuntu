@@ -62,9 +62,6 @@ super + {o,i}
 	bspc node {older,newer} -f; \
 	bspc wm -h on
 
-# toggle window layer
-super + l
-    switchLayer
 
 ##### SUPER + ALT #####
 
@@ -104,6 +101,9 @@ super + alt + space
 super + alt + Return
     kitty 
 
+# toggle window layer
+super + alt + l
+    switchLayer
 
 
 ##### SUPER + CTRL #####
