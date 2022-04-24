@@ -35,7 +35,7 @@ alert = ${colors.red}
 background = ${colors.base00}
 background-alt = ${colors.base01} 
 foreground = ${colors.purple}
-foreground-alt = ${colors.teal}
+foreground-alt = ${colors.blue}
 
 [bar/example]
 monitor = ${env:MONITOR:}

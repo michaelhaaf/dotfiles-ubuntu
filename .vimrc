@@ -121,7 +121,6 @@ endtry
 "
 " TODO: rename back to something generic so it's possible to switch dynamic
 colorscheme base16-rose-pine-moon-b16
-
 highlight Normal guibg=NONE ctermbg=NONE
 highlight Comment guibg=NONE ctermbg=NONE
 highlight Constant guibg=NONE ctermbg=NONE
@@ -143,11 +142,9 @@ highlight NonText guibg=NONE ctermbg=NONE
 highlight SignColumn guibg=NONE ctermbg=NONE
 highlight CursorLineNr guibg=NONE ctermbg=NONE
 highlight EndOfBuffer guibg=NONE ctermbg=NONE
-
 highlight CursorColumn cterm=NONE ctermbg=NONE
 highlight CursorLine cterm=NONE ctermbg=NONE
 highlight StatusLine guibg=NONE ctermbg=NONE
-
 set cursorline
 
 

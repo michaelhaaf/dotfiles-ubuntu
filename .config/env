@@ -4,6 +4,8 @@
 export BASH_ENV="$HOME/.bash_profile"
 export ENV="$HOME/.bash_profile"
 
+export PATH="/usr/local/go/bin:$PATH"
+export PATH="$HOME/.local/share/npm/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/share/cargo/bin:$PATH"
