@@ -13,7 +13,7 @@ export PATH="$HOME/Documents/Grading/GradingUtilities:$PATH";
 export PATH="$HOME/Repositories/mfa-workbook/scripts:$PATH"; 
 
 ### Default programs: ###
-export EDITOR="vim"
+export EDITOR="nvim"
 export TERMINAL="kitty"
 export BROWSER="firefox"
 export READER="zathura"
@@ -111,8 +111,14 @@ alias ccat="highlight --out-format=ansi" # color cat
 alias journalctl='journalctl --utc -o short-precise --no-hostname'
 alias x2goclient="x2goclient --home=$HOME/.config"
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
-alias vwiki='vim -c VimwikiIndex'
 alias icat="kitty +kitten icat --align=left"
+alias vwiki='nvim -c VimwikiIndex'
+alias vw='nvim -c VimwikiIndex'
+
+# alias oldvim="\vim", no need to create one, just use \vim
+alias vim="nvim"
+alias vi="nvim"
+alias v="nvim"
 
 # default ssh to use tmux for remote sessions
 function ssh () {

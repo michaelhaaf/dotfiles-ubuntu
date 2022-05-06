@@ -30,7 +30,7 @@ super + r
     
 # vimwiki
 super + v
-    kitty --single-instance vim -c VimwikiIndex
+    kitty --single-instance nvim -c VimwikiIndex
 
 # alternate between the tiled and monocle layout
 super + m
@@ -150,7 +150,7 @@ super + shift + r
 #
 # floating vimwiki
 super + shift + v
-    kitty --single-instance --class start_floating vim -c VimwikiIndex
+    kitty --single-instance --class start_floating nvim -c VimwikiIndex
 
 # floating terminal
 super + shift + Return

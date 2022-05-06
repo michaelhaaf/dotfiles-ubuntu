@@ -261,7 +261,8 @@ augroup END
 " Change indentation for the current buffer
 " `:Reindent cur_indent new_indent`, E.g., `:Reindent 2 4` for changing the
 " indentation from 2 to 4
-command -nargs=+ Reindent call utils#reindent(<f-args>)
+
+" command -nargs=+ Reindent call utils#reindent(<f-args>)
 
 " }}}
 
@@ -397,6 +398,10 @@ inoremap <S-CR> <C-o>o
 nnoremap zl 10zl
 nnoremap zh 10zh
 
+inoremap <F9> <C-O>za
+nnoremap <F9> za
+onoremap <F9> <C-C>za
+vnoremap <F9> zf
 " }}}
 
 " Copy and paste {{{
@@ -637,6 +642,10 @@ function! PackInit() abort
   " Snippets
   call minpac#add('L3MON4D3/LuaSnip')
   call minpac#add('saadparwaiz1/cmp_luasnip')
+
+  " TeX
+  call minpac#add('lervag/vimtex')
+  call minpac#add('tpope/vim-dispatch')
 
   " Tree-sitter
   call minpac#add('nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'})
