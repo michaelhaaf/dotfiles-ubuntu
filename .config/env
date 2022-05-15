@@ -119,6 +119,7 @@ alias vw='nvim -c VimwikiIndex'
 alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
+alias vimdiff='nvim -d'
 
 # default ssh to use tmux for remote sessions
 function ssh () {

@@ -21,8 +21,7 @@ install curl
 install git
 install htop
 install vim
-# install exa
-# install nvim??
+install exa
 install calcurse
 
 install kitty
@@ -32,8 +31,6 @@ install pass
 install pass-extension-otp
 
 install ranger
-install xcompmgr
-install compton
 install calc
 install xdotool
 
@@ -41,8 +38,6 @@ install firefox
 install chromium-browser
 install lynx
 install newsboat
-install shellcheck
-# install thunderbird
 
 install python2
 install python3-venv
