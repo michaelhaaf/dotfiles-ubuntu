@@ -1,0 +1,40 @@
+#!/bin/bash
+
+function add_repository {
+  local repo="${1#*:}" # cut off "ppa:" suffix
+  echo "Checking if ${repo} is installed..."
+  [[ $(! grep -qr "${repo}" /etc/apt) ]] && \
+    echo "Adding repo ${repo}..." && \
+    sudo add-apt-repository "${repo}" -y
+  echo "Repo ${repo} installed."
+}
+
+function install {
+  local package="${1}"
+  echo "Checking if ${package} is installed..."
+  ! dpkg -l "${package}" &> /dev/null && \
+    echo "Installing: ${package}..." && \
+    sudo apt install -y "${package}"
+  echo "Package ${package} installed."
+}
+
+function custom_install {
+  local package="${1}"
+  local command="${2}"
+  echo "Checking if ${package} is installed..."
+  ! type -P "${package}" &> /dev/null && \
+    echo "Installing: ${package}..." && \
+    eval "bash -c $command"
+  echo "Package ${package} installed."
+}
+
+# pipe list of files from stdin
+while read -r program command; do
+  if [[ "${program}" == "ppa:"* ]]; then
+    add_repository "${program}"
+  elif [[ -z "${command}" ]]; then
+    install "${program}"
+  else
+    custom_install "${program}" "${command}"
+  fi
+done

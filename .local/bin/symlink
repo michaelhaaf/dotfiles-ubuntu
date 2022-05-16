@@ -1,24 +1,20 @@
 #!/bin/bash
 
-set -o errexit -o pipefail -o noclobber -o nounset
-
-# i don't love this but i'll keep it for now
-# Up from scripts dir
-cd ..
-
-dotfilesDir=$(pwd)
+# TODO make independent env variable
+DOTFILES="~/Repositories/dotfiles/"
 
 function linkDotfile {
-  dest="${HOME}/${1}"
-  dateStr="$(date +%Y-%m-%d-%H%M)"
+  local source="${DOTFILES}/${1}"
+  local dest="${HOME}/${1}"
+  local dateStr="$(date +%Y-%m-%d-%H%M)"
 
-  if [ ! -f "${dotfilesDir}/${1}" ] && [ ! -d "${dotfilesDir}/${1}" ]; then
+  if [ ! -f "${source}" ] && [ ! -d "${source}" ]; then
 	# Dotfile not in this repo, abort
 	echo "Requested dotfile ${1} not present in dot directory. Copy it here first then try again."
 	exit 1
   fi
 
-  if [ -h "${HOME}/${1}" ]; then
+  if [ -h "${dest}" ]; then
     # Existing symlink 
     echo "Removing existing symlink: ${dest}"
     rm "${dest}" 
@@ -35,9 +31,10 @@ function linkDotfile {
   fi
 
   echo "Creating new symlink: ${dest}"
-  cp -rs "${dotfilesDir}/${1}" "${dest}"
+  cp -rs "${source}" "${dest}"
 }
 
+# TODO: load from find
 linkDotfile '.vimrc'
 linkDotfile '.bashrc'
 linkDotfile ".xinitrc"
@@ -73,3 +70,6 @@ linkDotfile '.local/bin/pwned-pass'
 linkDotfile '.local/bin/brightness-adj'
 linkDotfile '.local/share/flavours/base16/templates/bspwm'
 linkDotfile '.local/share/flavours/base16/templates/qt5ct'
+
+# TODO make idempotent in a better way
+cd -

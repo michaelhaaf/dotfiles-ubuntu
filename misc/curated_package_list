@@ -1,3 +1,4 @@
+ppa:mozillateam/firefox-next
 curl
 git
 htop
@@ -13,13 +14,11 @@ ranger
 calc
 xdotool
 firefox
-chromium-browser
 lynx
 newsboat
 python2
 python3-venv
 python3-pip
-npm
 jq
 bspwm
 lxappearance
