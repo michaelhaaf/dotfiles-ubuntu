@@ -34,6 +34,7 @@ function linkDotfile {
   cp -rs "${source}" "${dest}"
 }
 
-find "${DOTFILES}" -maxdepth 1 -name ".*" -type f -exec linkDotfile {} \;
-find "${DOTFILES}/.config" -maxdepth 1 -name ".*" -exec linkDotfile {} \;
-find "${DOTFILES}/.local" -maxdepth 1 -name ".*" -exec linkDotfile {} \;
+export -f linkDotfile
+find "${DOTFILES}" -maxdepth 1 -name ".*" -type f # -exec bash -c 'for f; do linkDotfile "${f}"; done' _ {} +
+find "${DOTFILES}.config/" -maxdepth 1 -mindepth 1 # -exec bash -c 'for f; do linkDotfile "${f}"; done' _ {} +
+find "${DOTFILES}.local/bin" -maxdepth 1 -type f # -exec bash -c 'for f; do linkDotfile "${f}"; done' _ {} +
