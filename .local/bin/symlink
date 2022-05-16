@@ -1,46 +1,36 @@
 #!/bin/bash
 
+# TODO in general: this is no longer making backups, ensure your backups are
+# working
 # TODO make independent env variable
-DOTFILES="${HOME}/Repositories/dotfiles/"
+DOTFILES="${HOME}/Repositories/dotfiles"
+export DOTFILES
 
 function linkDotfile {
-  # TODO: need to keep the "local" part of argument name
-  local source="${1}"
-  local dest="${HOME}/$(basename "${1}")"
-  local dateStr="$(date +%Y-%m-%d-%H%M)"
+  local source=("${1}")
+  local filename="${source#$DOTFILES/}"
+  local dest="${HOME}/${filename%/*}"
 
-  if [ ! -f "${source}" ] && [ ! -d "${source}" ]; then
-	# Dotfile not in this repo, abort
-	echo "Requested dotfile ${1} not present in dot directory. Copy it here first then try again."
-	exit 1
-  fi
+  echo "Verifying symlink from ${source} to ${dest}..."
 
-  if [ -h "${dest}" ]; then
-    # Existing symlink
-    echo "Removing existing symlink: ${dest}"
-    rm "${dest}"
+  # Ignore SC2068: I want globbing of individual elements
+  ! ls ${source[@]} &> /dev/null && \
+    echo "Dotfile ${source} not present in dot directory. Ignoring." && return 0
 
-  elif [ -f "${dest}" ]; then
-    # Existing file
-    echo "Backing up existing file: ${dest}"
-    mv "${dest}"{,."${dateStr}"}
-
-  elif [ -d "${dest}" ]; then
-    # Ignore directories that contain symlinks
-    [[ -n $(find "${dest}" -type l) ]] && echo "Ignoring existing dir with symlinks: ${dir}" && exit
-
-    # Existing dir
-    echo "Backing up existing dir: ${dest}"
-    mv "${dest}"{,."${dateStr}"}
-  fi
-
-  # TODO: figure out how to leave directories alone if they contain symlinks
-
-  echo "Creating new symlink: ${dest}"
-  cp -rs "${source}" "${dest}"
+  # cp -i (confirm overwrite) -f (force overwrite) -r (recursive) -s (symlink)
+  # -u (update newer/missing only) -p (preserve ownership etc.) -v (verbose)
+  cp -ifrsupv ${source[@]} "${dest}"
 }
 
+# TODO honestly this could be a bit better lol
+# (directory and file handling could be decoupled for instance)
 export -f linkDotfile
-find "${DOTFILES}" -maxdepth 1 -name ".*" -type f -exec bash -c 'for f; do linkDotfile "${f}"; done' _ {} +
-find "${DOTFILES}.config/" -maxdepth 1 -mindepth 1 -exec bash -c 'for f; do linkDotfile "${f}"; done' _ {} +
-find "${DOTFILES}.local/bin" -maxdepth 1 -type f -exec bash -c 'for f; do linkDotfile "${f}"; done' _ {} +
+find "${DOTFILES}/" -maxdepth 1 -name ".*" -type f -exec bash -c 'for f; do linkDotfile "${f}"; done' _ {} +
+find "${DOTFILES}/.local/bin/" -maxdepth 1 -type f -exec bash -c 'for f; do linkDotfile "${f}"; done' _ {} +
+find "${DOTFILES}/.config/" -maxdepth 1 -type f -exec bash -c 'for f; do linkDotfile "${f}"; done' _ {} +
+
+linkDotfile "${DOTFILES}/.ssh/*"
+find "${DOTFILES}/.config/" -maxdepth 1 -mindepth 1 -type d -exec bash -c \
+  'for f; do linkDotfile "${f}/*"; done' _ {} +
+  find "${DOTFILES}/.local/share/flavours/base16/templates/" -maxdepth 1 -mindepth 1 -type d -exec bash -c \
+  'for f; do linkDotfile "${f}/*"; done' _ {} +
