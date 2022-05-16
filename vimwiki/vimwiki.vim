@@ -1,4 +1,7 @@
 set nocompatible
+let g:vimwiki_global_ext = 0
+let g:vimwiki_key_mappings = { 'table_mappings': 0, }
+let g:vimwiki_table_mappings = 0
 
 " default settings for main wiki; here for clarification
 let vimwiki_main = {}
