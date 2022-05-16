@@ -95,7 +95,7 @@ format-prefix = "  "
 format-prefix-font = 3
 format-prefix-foreground = ${colors.foreground-alt}
 
-label = %title:0:80:...%
+label = %title:0:40:...%
 label-font = 4
 
 [module/filesystem]
