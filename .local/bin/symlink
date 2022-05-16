@@ -4,8 +4,9 @@
 DOTFILES="${HOME}/Repositories/dotfiles/"
 
 function linkDotfile {
+  # TODO: need to keep the "local" part of argument name
   local source="${1}"
-  local dest="${HOME}/$(basename ${1})"
+  local dest="${HOME}/$(basename "${1}")"
   local dateStr="$(date +%Y-%m-%d-%H%M)"
 
   if [ ! -f "${source}" ] && [ ! -d "${source}" ]; then
@@ -25,16 +26,21 @@ function linkDotfile {
     mv "${dest}"{,."${dateStr}"}
 
   elif [ -d "${dest}" ]; then
+    # Ignore directories that contain symlinks
+    [[ -n $(find "${dest}" -type l) ]] && echo "Ignoring existing dir with symlinks: ${dir}" && exit
+
     # Existing dir
     echo "Backing up existing dir: ${dest}"
     mv "${dest}"{,."${dateStr}"}
   fi
+
+  # TODO: figure out how to leave directories alone if they contain symlinks
 
   echo "Creating new symlink: ${dest}"
   cp -rs "${source}" "${dest}"
 }
 
 export -f linkDotfile
-find "${DOTFILES}" -maxdepth 1 -name ".*" -type f # -exec bash -c 'for f; do linkDotfile "${f}"; done' _ {} +
-find "${DOTFILES}.config/" -maxdepth 1 -mindepth 1 # -exec bash -c 'for f; do linkDotfile "${f}"; done' _ {} +
-find "${DOTFILES}.local/bin" -maxdepth 1 -type f # -exec bash -c 'for f; do linkDotfile "${f}"; done' _ {} +
+find "${DOTFILES}" -maxdepth 1 -name ".*" -type f -exec bash -c 'for f; do linkDotfile "${f}"; done' _ {} +
+find "${DOTFILES}.config/" -maxdepth 1 -mindepth 1 -exec bash -c 'for f; do linkDotfile "${f}"; done' _ {} +
+find "${DOTFILES}.local/bin" -maxdepth 1 -type f -exec bash -c 'for f; do linkDotfile "${f}"; done' _ {} +
