@@ -376,6 +376,9 @@ nnoremap <silent> ]T :<C-u>tablast<CR>
 " Toggle spell checking
 nnoremap <silent> \S :setlocal spell! spelllang=en_us<CR>:set spell?<CR>
 
+" Hotkey to quickly get previous spelling mistake
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
+
 " Toggle wrap
 nnoremap <silent> \w :set wrap!<CR>:set wrap?<CR>
 
@@ -643,6 +646,7 @@ function! PackInit() abort
   " Snippets
   call minpac#add('L3MON4D3/LuaSnip')
   call minpac#add('saadparwaiz1/cmp_luasnip')
+  call minpac#add('rafamadriz/friendly-snippets')
 
   " TeX
   call minpac#add('lervag/vimtex')

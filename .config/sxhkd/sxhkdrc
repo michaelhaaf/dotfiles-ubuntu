@@ -67,7 +67,7 @@ super + {o,i}
 
 # screenshot to file
 super + alt + @x
-	scrot -s
+	scrot -sf
 
 # brightness up
 super + alt + Up
@@ -134,7 +134,7 @@ super + ctrl + {m,x,y,z}
 
 # screenshot to clipboard
 super + shift + @x
-	scrot -s -e 'xclip -selection clipboard -t image/png -i $f'
+	scrot -fs -e 'xclip -selection clipboard -t image/png -i $f'
 
 # volume mute toggle
 super + shift + m

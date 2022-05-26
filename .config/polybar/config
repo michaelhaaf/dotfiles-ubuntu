@@ -63,16 +63,16 @@ module-margin-right = 2
 
 ;; FONTS (notes that these are 1-indexed when used, NOT 0)
 ; text
-font-0 = "Ubuntu Mono:style=Regular:antialias=true:pixelsize=10;3"
+font-0 = "Iosevka Term SS12:antialias=true:size=12"
 ; icons
-font-1 = "Iosevka Nerd Font:size=10:antialias=true;3"
+font-1 = "Iosevka Nerd Font:size=12:antialias=true:3"
 ; bigger icons
-font-2 = "Iosevka Nerd Font:size=12:antialias=true;3"
-font-3 = "Ubuntu Mono:style=Regular:antialias=true:pixelsize=10;3"
+font-2 = "Iosevka Nerd Font:size=13:antialias=true:3"
+font-3 = "Iosevka Term SS12:antialias=true:size=12"
 
 modules-left = date xwindow
 modules-center = bspwm
-modules-right = pulseaudio filesystem memory cpu temperature powermenu
+modules-right = pulseaudio filesystem memory cpu temperature battery powermenu
 ; TODO: customize for laptop (batery, wifi)
 
 ; tray-position = right
@@ -82,11 +82,7 @@ wm-restack = bspwm
 
 locale = en_CA.UTF-8
 
-scroll-up = bspwm-desknext
-scroll-down = bspwm-deskprev
-
-cursor-click = pointer
-cursor-scroll = ns-resize
+enable-scroll = false
 
 [module/xwindow]
 type = internal/xwindow
@@ -275,11 +271,8 @@ click-right = gnome-system-monitor
 
 [module/powermenu]
 type = custom/menu
-
 expand-right = true
-
 format-spacing = 1
-
 label-open = ⏻
 label-open-foreground = ${colors.red}
 label-close =  cancel
