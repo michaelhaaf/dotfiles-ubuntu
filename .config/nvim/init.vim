@@ -236,7 +236,7 @@ function! s:SetGitEnv() abort
   if !filereadable(cur_file)
     return
   endif
-  let git_dir = expand('~/Repositories/dotfiles/')
+  let git_dir = expand("${DOTFILES}")
   let work_tree = expand('~')
   let jib = jobstart(["git", "--git-dir", git_dir, "--work-tree", work_tree, "ls-files", "--error-unmatch", cur_file])
   let ret = jobwait([jib])[0]
@@ -504,6 +504,7 @@ nnoremap <silent> <Leader>t. :+tabmove<CR>
 
 " Searching {{{
 
+" NOTE: these seem to be LUA commands, so "," is the leader.
 " Clean search highlighting
 nnoremap <silent> <Leader>/ :<C-U>nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 

@@ -24,10 +24,10 @@ function linkDotfile {
 # e.g. error cp: target '/home/michael/.config/dunst' is not a directory
 
 export -f linkDotfile
+linkDotfile "${DOTFILES}/vimwiki/vimwiki.vim"
 find "${DOTFILES}/" -maxdepth 1 -name ".*" -type f -exec bash -c 'for f; do linkDotfile "${f}"; done' _ {} +
 find "${DOTFILES}/.local/bin/" -maxdepth 1 -type f -exec bash -c 'for f; do linkDotfile "${f}"; done' _ {} +
 find "${DOTFILES}/.config/" -maxdepth 1 -type f -exec bash -c 'for f; do linkDotfile "${f}"; done' _ {} +
-find "${DOTFILES}/vimwiki/" -maxdepth 1 -type f -exec bash -c 'for f; do linkDotfile "${f}"; done' _ {} +
 
 linkDotfile "${DOTFILES}/.ssh/*"
 find "${DOTFILES}/.config/" -maxdepth 1 -mindepth 1 -type d -exec bash -c \
