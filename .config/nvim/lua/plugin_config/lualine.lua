@@ -21,9 +21,9 @@ local custom_theme = require'lualine.themes.auto'
 
 custom_theme.normal.c.bg = "#393552"
 custom_theme.command.c.bg = "#393552"
-custom_theme.visual.c.bg = "#393552"
-custom_theme.replace.c.bg = "#393552"
-custom_theme.insert.c.bg = "#393552"
+-- custom_theme.visual.c.bg = "#393552"
+-- custom_theme.replace.c.bg = "#393552"
+-- custom_theme.insert.c.bg = "#393552"
 
 vim.opt.termguicolors = true
 require 'lualine'.setup {

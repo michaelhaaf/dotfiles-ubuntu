@@ -608,7 +608,10 @@ function! PackInit() abort
   call minpac#add('kyazdani42/nvim-tree.lua')
   call minpac#add('t9md/vim-choosewin')
   call minpac#add('lewis6991/foldsigns.nvim')
+
   call minpac#add('gelguy/wilder.nvim', { 'do': 'let &rtp=&rtp | UpdateRemotePlugins' })
+  call minpac#add('roxma/nvim-yarp')
+
   call minpac#add('SmiteshP/nvim-gps')
   call minpac#add('tversteeg/registers.nvim')
   call minpac#add('ThePrimeagen/harpoon')
@@ -642,15 +645,16 @@ function! PackInit() abort
   call minpac#add('hrsh7th/cmp-cmdline')
   call minpac#add('hrsh7th/cmp-nvim-lua')
   call minpac#add('onsails/lspkind-nvim')
+ 
+  " TeX
+  call minpac#add('lervag/vimtex')
+  call minpac#add('tpope/vim-dispatch')
 
   " Snippets
   call minpac#add('L3MON4D3/LuaSnip')
   call minpac#add('saadparwaiz1/cmp_luasnip')
   call minpac#add('rafamadriz/friendly-snippets')
-
-  " TeX
-  call minpac#add('lervag/vimtex')
-  call minpac#add('tpope/vim-dispatch')
+  call minpac#add('iurimateus/luasnip-latex-snippets.nvim')
 
   " Tree-sitter
   call minpac#add('nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'})
@@ -1023,8 +1027,7 @@ call wilder#set_option('pipeline', [
 
 " Customize the appearance
 " Use popupmenu for command and wildmenu for search
-call wilder#set_option('renderer', wilder#renderer_mux({
-      \ ':': wilder#popupmenu_renderer(wilder#popupmenu_border_theme({
+call wilder#set_option('renderer', wilder#popupmenu_renderer(wilder#popupmenu_palette_theme({
       \   'highlighter': wilder#basic_highlighter(),
       \   'border': 'rounded',
       \   'max_height': 15,
@@ -1039,17 +1042,30 @@ call wilder#set_option('renderer', wilder#renderer_mux({
       \   'right': [
       \     ' ', wilder#popupmenu_scrollbar(),
       \   ],
-      \ })),
-      \
-      \ '/': wilder#wildmenu_renderer({
-      \   'highlighter': wilder#basic_highlighter(),
-      \   'highlights': {
-      \     'accent': wilder#make_hl('WildmenuAccent', 'StatusLine', [{}, {}, {'foreground': '#f4468f'}]),
-      \   },
-      \ }),
-      \ }))
+      \ })))
 
 " }}}
+
+" vimtex {{{
+
+" Filter out some compilation warning messages from QuickFix display
+let g:vimtex_quickfix_ignore_filters = [
+      \ 'Underfull \\hbox',
+      \ 'Overfull \\hbox',
+      \ 'LaTeX Warning: .\+ float specifier changed to',
+      \ 'LaTeX hooks Warning',
+      \ 'Package siunitx Warning: Detected the "physics" package:',
+      \ 'Package hyperref Warning: Token not allowed in a PDF string',
+      \]
+
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='adbmg'
+
+" }}}
+
 "
 " }}}
 

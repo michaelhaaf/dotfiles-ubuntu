@@ -192,7 +192,7 @@ label = %date% %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
-format-volume = <ramp-volume> <label-volume>
+format-volume = <ramp-volume>  <label-volume>
 label-volume = %percentage%%
 label-volume-foreground = ${colors.foreground}
 label-volume-font = 4
@@ -210,7 +210,7 @@ ramp-volume-9 = 
 ramp-volume-foreground = ${colors.foreground-alt}
 ramp-volume-font = 3
 
-label-muted = 婢 muted
+label-muted = "婢 "
 label-muted-foreground = ${colors.foreground-alt}
 label-muted-font = 3
 

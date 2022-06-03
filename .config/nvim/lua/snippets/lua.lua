@@ -1,5 +1,0 @@
-local snippets = {
-
-}
-
-return snippets

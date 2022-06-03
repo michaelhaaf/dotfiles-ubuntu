@@ -64,6 +64,7 @@ end)
 -- Snippets are stored in separate files.
 -- Ref: https://github.com/L3MON4D3/LuaSnip/blob/master/DOC.md#lua-snippets-loader
 require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/lua/snippets" })
+require("luasnip.loaders.from_vscode").lazy_load()
 
 -- Create a command to edit the snippet file associated with the current
 -- filetype type

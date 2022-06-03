@@ -2,7 +2,7 @@
 
 " base16-vim (https://github.com/chriskempson/base16-vim)
 " by Chris Kempson (http://chriskempson.com)
-" Rosé Pine Moon Base16 scheme by Michael Haaf <michael.haaf@gmail.com>
+" Rosé Pine Michael scheme by Michael Haaf <michael.haaf@gmail.com>
 
 " This enables the coresponding base16-shell script to run so that
 " :colorscheme works in terminals supported by base16-shell scripts
@@ -10,7 +10,7 @@
 "   let g:base16_shell_path=base16-builder/output/shell/
 if !has("gui_running")
   if exists("g:base16_shell_path")
-    execute "silent !/bin/sh ".g:base16_shell_path."/base16-rose-pine-moon-b16.sh"
+    execute "silent !/bin/sh ".g:base16_shell_path."/base16-rose-pine-michael.sh"
   endif
 endif
 
@@ -33,8 +33,8 @@ let s:gui07        = "d9d7e1"
 let g:base16_gui07 = "d9d7e1"
 let s:gui08        = "eb6f92"
 let g:base16_gui08 = "eb6f92"
-let s:gui09        = "56949f"
-let g:base16_gui09 = "56949f"
+let s:gui09        = "eb6f92"
+let g:base16_gui09 = "eb6f92"
 let s:gui0A        = "f6c177"
 let g:base16_gui0A = "f6c177"
 let s:gui0B        = "ea9a97"
@@ -145,7 +145,7 @@ endif
 " Theme setup
 hi clear
 syntax reset
-let g:colors_name = "base16-rose-pine-moon-b16"
+let g:colors_name = "base16-rose-pine-michael"
 
 " Highlighting function
 " Optional variables are attributes and guisp
@@ -200,8 +200,8 @@ call <sid>hi("Substitute",    s:gui01, s:gui0A, s:cterm01, s:cterm0A, "none", ""
 call <sid>hi("SpecialKey",    s:gui03, "", s:cterm03, "", "", "")
 call <sid>hi("TooLong",       s:gui08, "", s:cterm08, "", "", "")
 call <sid>hi("Underlined",    s:gui08, "", s:cterm08, "", "", "")
-call <sid>hi("Visual",        s:gui02, s:gui0B, s:cterm02, s:cterm0B, "", "")
-call <sid>hi("VisualNOS",     s:gui02, s:gui0B, s:cterm02, s:cterm0B, "", "")
+call <sid>hi("Visual",        "", s:gui02, "", s:cterm02, "", "")
+call <sid>hi("VisualNOS",     s:gui08, "", s:cterm08, "", "", "")
 call <sid>hi("WarningMsg",    s:gui08, "", s:cterm08, "", "", "")
 call <sid>hi("WildMenu",      s:gui08, s:gui0A, s:cterm08, "", "", "")
 call <sid>hi("Title",         s:gui0D, "", s:cterm0D, "", "none", "")
@@ -212,37 +212,17 @@ call <sid>hi("LineNr",        s:gui03, s:gui01, s:cterm03, s:cterm01, "", "")
 call <sid>hi("SignColumn",    s:gui03, s:gui01, s:cterm03, s:cterm01, "", "")
 call <sid>hi("StatusLine",    s:gui04, s:gui02, s:cterm04, s:cterm02, "none", "")
 call <sid>hi("StatusLineNC",  s:gui03, s:gui01, s:cterm03, s:cterm01, "none", "")
-call <sid>hi("VertSplit",     "none", "none", "none", "none", "none", "")
+call <sid>hi("VertSplit",     s:gui02, s:gui02, s:cterm02, s:cterm02, "none", "")
 call <sid>hi("ColorColumn",   "", s:gui01, "", s:cterm01, "none", "")
-call <sid>hi("CursorColumn",  "", s:gui02, "", s:cterm02, "none", "")
-call <sid>hi("CursorLine",    "", s:gui02, "", s:cterm02, "none", "")
-call <sid>hi("CursorLineNr",  s:gui04, s:gui02, s:cterm04, s:cterm02, "", "")
+call <sid>hi("CursorColumn",  "", s:gui01, "", s:cterm01, "none", "")
+call <sid>hi("CursorLine",    "", s:gui01, "", s:cterm01, "none", "")
+call <sid>hi("CursorLineNr",  s:gui04, s:gui01, s:cterm04, s:cterm01, "", "")
 call <sid>hi("QuickFixLine",  "", s:gui01, "", s:cterm01, "none", "")
 call <sid>hi("PMenu",         s:gui05, s:gui01, s:cterm05, s:cterm01, "none", "")
 call <sid>hi("PMenuSel",      s:gui01, s:gui05, s:cterm01, s:cterm05, "", "")
 call <sid>hi("TabLine",       s:gui03, s:gui01, s:cterm03, s:cterm01, "none", "")
 call <sid>hi("TabLineFill",   s:gui03, s:gui01, s:cterm03, s:cterm01, "none", "")
 call <sid>hi("TabLineSel",    s:gui0B, s:gui01, s:cterm0B, s:cterm01, "none", "")
-call <sid>hi("RedrawDebugClear", s:gui01, s:gui0A, s:cterm01, s:cterm0A, "none", "")
-call <sid>hi("RedrawDebugComposed", s:gui01, s:gui0B, s:cterm01, s:cterm0B, "none", "")
-call <sid>hi("RedrawDebugRecompose", s:gui01, s:gui08, s:cterm01, s:cterm08, "none", "")
-call <sid>hi("FloatShadow", s:gui05, s:gui01, s:cterm05, s:cterm01, "none", "")
-call <sid>hi("FloatShadowThrough", s:gui05, s:gui01, s:cterm05, s:cterm01, "none", "")
-
-" 'Diagnostic' syntax highlighting
-call <sid>hi("DiagnosticError", s:gui08, "", s:cterm08, "", "", "")
-call <sid>hi("DiagnosticUnderlineError", "", "", "", "", "", s:gui08)
-
-call <sid>hi("NvimInternalError", s:gui01, s:gui08, s:cterm01, s:cterm08, "", "")
-
-" Rainbox colors
-call <sid>hi("rainbowcol1", s:gui08, "", s:cterm08, "", "", "")
-call <sid>hi("rainbowcol2", s:gui0B, "", s:cterm0B, "", "", "")
-call <sid>hi("rainbowcol3", s:gui0A, "", s:cterm0A, "", "", "")
-call <sid>hi("rainbowcol4", s:gui0D, "", s:cterm0D, "", "", "")
-call <sid>hi("rainbowcol5", s:gui09, "", s:cterm09, "", "", "")
-call <sid>hi("rainbowcol6", s:gui0C, "", s:cterm0C, "", "", "")
-call <sid>hi("rainbowcol7", s:gui0E, "", s:cterm0E, "", "", "")
 
 " Standard syntax highlighting
 call <sid>hi("Boolean",      s:gui09, "", s:cterm09, "", "", "")
@@ -292,15 +272,15 @@ call <sid>hi("cssClassName",   s:gui0E, "", s:cterm0E, "", "", "")
 call <sid>hi("cssColor",       s:gui0C, "", s:cterm0C, "", "", "")
 
 " Diff highlighting
-call <sid>hi("DiffAdd",      s:gui0D, "none",  s:cterm0D, "none", "", "")
-call <sid>hi("DiffChange",   s:gui03, "none",  s:cterm03, "none", "", "")
-call <sid>hi("DiffDelete",   s:gui08, "none",  s:cterm08, "none", "", "")
-call <sid>hi("DiffText",     s:gui0B, "none",  s:cterm0B, "none", "", "")
-call <sid>hi("DiffAdded",    s:gui0D, "none",  s:cterm0D, "none", "", "")
-call <sid>hi("DiffFile",     s:gui08, "none",  s:cterm08, "none", "", "")
-call <sid>hi("DiffNewFile",  s:gui0B, "none",  s:cterm0B, "none", "", "")
-call <sid>hi("DiffLine",     s:gui0D, "none",  s:cterm0D, "none", "", "")
-call <sid>hi("DiffRemoved",  s:gui08, "none",  s:cterm08, "none", "", "")
+call <sid>hi("DiffAdd",      s:gui0B, s:gui01,  s:cterm0B, s:cterm01, "", "")
+call <sid>hi("DiffChange",   s:gui03, s:gui01,  s:cterm03, s:cterm01, "", "")
+call <sid>hi("DiffDelete",   s:gui08, s:gui01,  s:cterm08, s:cterm01, "", "")
+call <sid>hi("DiffText",     s:gui0D, s:gui01,  s:cterm0D, s:cterm01, "", "")
+call <sid>hi("DiffAdded",    s:gui0B, s:gui00,  s:cterm0B, s:cterm00, "", "")
+call <sid>hi("DiffFile",     s:gui08, s:gui00,  s:cterm08, s:cterm00, "", "")
+call <sid>hi("DiffNewFile",  s:gui0B, s:gui00,  s:cterm0B, s:cterm00, "", "")
+call <sid>hi("DiffLine",     s:gui0D, s:gui00,  s:cterm0D, s:cterm00, "", "")
+call <sid>hi("DiffRemoved",  s:gui08, s:gui00,  s:cterm08, s:cterm00, "", "")
 
 " Git highlighting
 call <sid>hi("gitcommitOverflow",       s:gui08, "", s:cterm08, "", "", "")
@@ -320,10 +300,10 @@ call <sid>hi("gitcommitDiscardedFile",  s:gui08, "", s:cterm08, "", "bold", "")
 call <sid>hi("gitcommitSelectedFile",   s:gui0B, "", s:cterm0B, "", "bold", "")
 
 " GitGutter highlighting
-call <sid>hi("GitGutterAdd",     s:gui0D, "", s:cterm0D, "", "", "")
-call <sid>hi("GitGutterChange",  s:gui0B, "", s:cterm0B, "", "", "")
-call <sid>hi("GitGutterDelete",  s:gui08, "", s:cterm08, "", "", "")
-call <sid>hi("GitGutterChangeDelete",  s:gui0E, "", s:cterm0E, "", "", "")
+call <sid>hi("GitGutterAdd",     s:gui0B, s:gui01, s:cterm0B, s:cterm01, "", "")
+call <sid>hi("GitGutterChange",  s:gui0D, s:gui01, s:cterm0D, s:cterm01, "", "")
+call <sid>hi("GitGutterDelete",  s:gui08, s:gui01, s:cterm08, s:cterm01, "", "")
+call <sid>hi("GitGutterChangeDelete",  s:gui0E, s:gui01, s:cterm0E, s:cterm01, "", "")
 
 " HTML highlighting
 call <sid>hi("htmlBold",    s:gui0A, "", s:cterm0A, "", "", "")
@@ -425,8 +405,20 @@ call <sid>hi("StartifySpecial",  s:gui03, "", s:cterm03, "", "", "")
 " Java highlighting
 call <sid>hi("javaOperator",     s:gui0D, "", s:cterm0D, "", "", "")
 
+" Extras (added May 20 something 2022)
+" hi(group, guifg, guibg, ctermfg, ctermbg, attr, guisp)
+call <sid>hi("RedrawDebugClear" , s:gui00, s:gui03, s:cterm00, s:cterm03, "", "")
+call <sid>hi("RedrawDebugComposed" , s:gui00, s:gui06, s:cterm00, s:cterm06, "", "")
+call <sid>hi("RedrawDebugRecompose" , s:gui00, s:gui08, s:cterm00, s:cterm08, "", "")
+
+call <sid>hi("DiagnosticError"      , s:gui08 , "" , s:cterm08 , "" , "" , "")
+call <sid>hi("DiagnosticWarn"      , s:gui04 , "" , s:cterm04 , "" , "" , "")
+
 " Remove functions
 delf <sid>hi
+
+" Setup links
+" hi link 'DiagnosticError' 'Error'
 
 " Remove color variables
 unlet s:gui00 s:gui01 s:gui02 s:gui03  s:gui04  s:gui05  s:gui06  s:gui07  s:gui08  s:gui09 s:gui0A  s:gui0B  s:gui0C  s:gui0D  s:gui0E  s:gui0F
