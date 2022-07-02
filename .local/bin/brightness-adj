@@ -1,6 +1,8 @@
 #!/bin/bash
 
-backlight_conf="/sys/class/backlight/nvidia_0"
+backlight_conf="/sys/class/backlight"
+[[ $(hostname) = "lattitude" ]] && backlight_conf="$backlight_conf/intel_backlight"
+[[ $(hostname) = "home" ]] && backlight_conf="$backlight_conf/nvidia_0"
 current=$(cat "$backlight_conf/brightness")
 max=$(cat "$backlight_conf/max_brightness")
 ((step=max/100))
@@ -19,8 +21,3 @@ mode=$1
 [[ $mode = "inc" ]] && inc_brightness
 [[ $mode = "dec" ]] && dec_brightness
 exit 0
-
-
-
-
-
