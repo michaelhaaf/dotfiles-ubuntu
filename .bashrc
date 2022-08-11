@@ -110,12 +110,7 @@ export MANPAGER='vim -c "set relativenumber!" -c "set nu!" -M +MANPAGER -'
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-if [ -f "/home/michael/miniconda3/etc/profile.d/conda.sh" ]; then
-    . "/home/michael/miniconda3/etc/profile.d/conda.sh"
-else
-    export PATH="/home/michael/miniconda3/bin:$PATH"
-fi
-
+. "/home/michael/miniconda3/etc/profile.d/conda.sh"
 . "/home/michael/.local/share/cargo/env"
 [ -f ~/.config/fzf/fzf.bash ] && source ~/.config/fzf/fzf.bash
 
